@@ -9,6 +9,9 @@ pygame.init()
 screen = pygame.display.set_mode((RES), pygame.RESIZABLE) #creates display surface and makes it fullscreen by resizing
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate
+#circle starting coordinates
+x=200
+y=200
 
 run=True
 #game runs in this loop
@@ -19,6 +22,8 @@ while run:
             run=False
             pygame.quit()
             sys.exit() # closes the while loop 
+     
+    pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip() #updates the surface every frame
     #clock.tick(60) #while loop shoudlnt run faster than 60 times per second
 
@@ -45,11 +50,7 @@ while run:
 
 
 
-""" 
-#circle starting coordinates
-#x=200
-#y=200
-
+"""
 #x_change = 0
 #y_change = 0
 
@@ -103,8 +104,7 @@ while run:
     #add on the change coordinates to og coordinates
     x += x_change
     y += y_change
- 
-    pygame.draw.circle(screen,RED,(x,y),30) """
+ """
     
             
     
