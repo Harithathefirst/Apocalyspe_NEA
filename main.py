@@ -14,7 +14,7 @@ clock = pygame.time.Clock() #clock object to help make frame rate
 x=200
 y=200
 
-run=True
+""" run=True
 #game runs in this loop
 while run:
     #close game condition
@@ -24,17 +24,16 @@ while run:
             pygame.quit()
             sys.exit() # closes the while loop 
     ##circle to check what fullscreen does to objects
-    pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip() #updates the surface every frame
-    #clock.tick(60) #while loop shoudlnt run faster than 60 times per second
+    #clock.tick(60) #while loop shoudlnt run faster than 60 times per second """
 
-"""
-#x_change = 0
-#y_change = 0
 
-#speed = 8
+x_change = 0
+y_change = 0
 
-#run=True
+speed = 8
+
+run=True
 #game runs in this loop
 while run:
     #close game condition
@@ -82,10 +81,13 @@ while run:
     #add on the change coordinates to og coordinates
     x += x_change
     y += y_change
- """
+    pygame.draw.circle(screen,RED,(x,y),30)
+    pygame.display.flip()#updates screen 
+    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
+ 
     
   
-""" 
+"""
 
 #class Main_Game:
     def __init__(self):
