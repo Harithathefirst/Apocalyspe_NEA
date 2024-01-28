@@ -81,6 +81,7 @@ while run:
     #add on the change coordinates to og coordinates
     x += x_change
     y += y_change
+    screen.fill(BLACK)
     pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip()#updates screen 
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
