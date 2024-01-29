@@ -13,25 +13,10 @@ clock = pygame.time.Clock() #clock object to help make frame rate
 #circle starting coordinates
 x=200
 y=200
-
-""" run=True
-#game runs in this loop
-while run:
-    #close game condition
-    for event in pygame.event.get():
-         if event.type == pygame.QUIT:
-            run=False
-            pygame.quit()
-            sys.exit() # closes the while loop 
-    ##circle to check what fullscreen does to objects
-    pygame.display.flip() #updates the surface every frame
-    #clock.tick(60) #while loop shoudlnt run faster than 60 times per second """
-
-
 x_change = 0
 y_change = 0
-
 speed = 8
+
 
 run=True
 #game runs in this loop
@@ -83,14 +68,14 @@ while run:
     y += y_change
     screen.fill(BLACK)
     pygame.draw.circle(screen,RED,(x,y),30)
-    pygame.display.flip()#updates screen 
+    pygame.display.flip()#updates screen every frame
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
  
     
   
-"""
 
-#class Main_Game:
+
+class Main_Game:
     def __init__(self):
         #attribute of everything in the class
         #initiates pygame
@@ -98,15 +83,16 @@ while run:
         self.screen = pygame.display.set_mode(RES), pygame.RESIZABLE #creates display surface and makes it fullscreen by resizing
         self.clock = pygame.time.Clock() #clock object to help make frame rate
         self.name = pygame.display.set_caption("Apocalypse") #sets title on the window
-        #return self.clock
 
-    #def update(self):
+    def update(self):
         pygame.display.flip() #updates display surface - the whole screen is updated
         self.clock.tick(FPS)  #the while loop should not run faster than 60 times per second
 
-    #def draw(self):
+    def draw(self):
         self.screen.fill(BLACK)#makes screen black at each iteration
-         """          
+        
+    
+             
     
     
 
