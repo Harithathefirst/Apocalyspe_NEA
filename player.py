@@ -1,6 +1,6 @@
 import pygame
 
-def movement(x_change,y_change,speed):
+def movement(x,y,x_change,y_change,speed):
     for event in pygame.event.get():
  #WASD CONTROLS
         if event.type == pygame.KEYDOWN:
@@ -40,4 +40,4 @@ def movement(x_change,y_change,speed):
     #add on the change coordinates to og coordinates
     x += x_change
     y += y_change
-    return x_change,y_change
+    return x,y,x_change,y_change

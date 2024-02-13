@@ -3,7 +3,7 @@ import sys #import sys  #imports system-specific parameters and functions
 from settings import *
 import math #access sin and cos
 import time
-#from player import movement
+from player import *
 
 pygame.init()
 screen = pygame.display.set_mode(RES) #creates display surface and makes it fullscreen by resizing
@@ -27,45 +27,8 @@ while run:
             run=False
             pygame.quit()
             sys.exit() # closes the while loop 
-         #WASD CONTROLS
-        if event.type == pygame.KEYDOWN:
-            #W - move forards
-            if event.key == pygame.K_w:
-                x_change = 0
-                y_change=-speed
-            #A - move to the left
-            elif event.key == pygame.K_a:
-                x_change=-speed
-                y_change=0
-            #S - move backwards
-            elif event.key == pygame.K_s:
-                x_change=0
-                y_change=speed
-            #D- move to the right
-            elif event.key == pygame.K_d:
-                x_change=speed
-                y_change=0
-        elif event.type == pygame.KEYUP:
-                 #W - move forards
-            if event.key == pygame.K_w:
-                x_change = 0
-                y_change=0 
-            #A - move to the left
-            elif event.key == pygame.K_a:
-                x_change=0
-                y_change=0
-            #S - move backwards
-            elif event.key == pygame.K_s:
-                x_change=0
-                y_change=0
-            #D- move to the right
-            elif event.key == pygame.K_d:
-                x_change=0
-                y_change=0
+        movement(x,y,x_change,y_change,speed)
 
-    #add on the change coordinates to og coordinates
-    x += x_change
-    y += y_change
     screen.fill(BLACK)
     pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip()#updates screen every frame
@@ -75,7 +38,7 @@ while run:
   
 
 
-class Main_Game:
+""" class Main_Game:
     def __init__(self):
         #attribute of everything in the class
         #initiates pygame
@@ -90,6 +53,16 @@ class Main_Game:
 
     def draw(self):
         self.screen.fill(BLACK)#makes screen black at each iteration
+
+    def check_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run=False
+                pygame.quit()
+                sys.exit() # closes the while loop 
+    d """
+
+
         
     
              
