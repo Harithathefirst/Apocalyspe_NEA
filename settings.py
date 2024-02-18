@@ -1,7 +1,8 @@
 import pygame 
 
-RES = WIDTH,HEIGHT = 1500,900
+RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 FPS = 30
+
 screen = pygame.display.set_mode(RES) #creates display surface and makes it fullscreen by resizing
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate
