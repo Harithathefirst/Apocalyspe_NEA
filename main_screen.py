@@ -17,12 +17,10 @@ while run:
         if event.type == pygame.QUIT:
             #run=False
             pygame.quit()
-            sys.exit() # closes the while loop 
+            sys.exit(0) # closes the while loop 
+
     #draw 2d map representation
     draw_map()
-    
-  
-            
     pygame.display.flip()#updates screen every frame
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
 
