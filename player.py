@@ -1,7 +1,6 @@
 import pygame
 
-def movement(x,y,x_change,y_change,speed):
-    for event in pygame.event.get():
+def movement(event,speed,x_change,y_change):
  #WASD CONTROLS
         if event.type == pygame.KEYDOWN:
             #W - move forards
@@ -37,7 +36,8 @@ def movement(x,y,x_change,y_change,speed):
             elif event.key == pygame.K_d:
                 x_change=0
                 y_change=0
-    #add on the change coordinates to og coordinates
-    x += x_change
-    y += y_change
-    return x,y,x_change,y_change
+            return x_change,y_change
+
+
+#def add(a,b):
+    #return a+b

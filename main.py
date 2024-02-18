@@ -10,33 +10,43 @@ screen = pygame.display.set_mode(RES) #creates display surface and makes it full
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate
 
-#circle starting coordinates
+""" #circle starting coordinates
 x=200
 y=200
 x_change = 0
 y_change = 0
-speed = 8
+speed = 8 """
 
 
 run=True
 #game runs in this loop
 while run:
+    #pygame.draw.rect(screen,BLUE, pygame.Rect(500, 500,75,75)) 
+    pygame.draw.rect(screen,RED, pygame.Rect(100, 100, 50, 50)) 
+    pygame.draw.rect(screen,GREEN, pygame.Rect(500, 500, 100, 300)) 
     #close game condition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run=False
             pygame.quit()
             sys.exit() # closes the while loop 
-        movement(x,y,x_change,y_change,speed)
 
-    screen.fill(BLACK)
-    pygame.draw.circle(screen,RED,(x,y),30)
+        #movement(event,speed,x_change,y_change)
+        #add on the change coordinates to og coordinates
+        #x += x_change
+        #y += y_change
+        #print(x,y)
+        
+
+
+    #screen.fill(BLACK)
+    #pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip()#updates screen every frame
-    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
+    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second  
  
     
-  
-
+ 
+#pygame.display.flip()
 
 """ class Main_Game:
     def __init__(self):
@@ -60,9 +70,14 @@ while run:
                 run=False
                 pygame.quit()
                 sys.exit() # closes the while loop 
-    d """
+     """
 
 
+
+""" a=5
+b=2
+c= add(a,b)
+print(c) """
         
     
              
