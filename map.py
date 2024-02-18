@@ -19,7 +19,7 @@ model_map = [
 #pygame.init()
 
 MAP_WIDTH = 8
-TILE_SIZE = int(SCREEN_WIDTH/ MAP_WIDTH)
+TILE_SIZE = int(SCREEN_WIDTH / MAP_WIDTH)
 #visual representation of map
 MAP = (
     '########'
@@ -34,7 +34,7 @@ MAP = (
 
   #draw out the 2d map
 def draw_map():
-    #loop over map rows - R=10xC=8
+    #loop over map rows - R=8xC=8
     for row in range(8):
         #loop over map columns
         for column in range (8):
