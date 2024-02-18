@@ -35,9 +35,9 @@ MAP = (
   #draw out the 2d map
 def draw_map():
     #loop over map rows - R=10xC=8
-    for row in range(11):
+    for row in range(8):
         #loop over map columns
-        for column in range (9):
+        for column in range (8):
             #calculate square index for each square on map - where each square will go 
             square = row * MAP_WIDTH + column
 
