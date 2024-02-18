@@ -18,18 +18,18 @@ model_map = [
 
 #pygame.init()
 
-MAP_WIDTH = 10
+MAP_WIDTH = 8
 TILE_SIZE = int(SCREEN_WIDTH/ MAP_WIDTH)
 #visual representation of map
 MAP = (
-    '##########'
-    '#        #'
-    '#   #    #'
-    '#  ###   #'
-    '#       ##'
-    '#   ###  #'
-    '#     #  #'
-    '##########'
+    '########'
+    '#  #   #'
+    '# ###  #'
+    '#      #'
+    '#      #'
+    '# ###  #'
+    '#   #  #'
+    '########'
 ) 
 
   #draw out the 2d map
