@@ -40,7 +40,7 @@ def draw_map():
         #loop over map columns
         for column in range (8):
             #calculate square index for each square on map - where each square will go 
-            square = int((row * MAP_WIDTH + column)/2)
+            square = row * MAP_WIDTH + column
 
             #draw map in game window
             #pygame.draw.rect(surface,color,rect,optwidth)
@@ -50,7 +50,7 @@ def draw_map():
                 (column * TILE_SIZE, row * TILE_SIZE, TILE_SIZE - 1, TILE_SIZE - 1),#actual size of the squares and position (x,y,width,height)
             )  
 
-print(MAP)
+#print(MAP)
 
 #try:
      #print(MAP[square])
