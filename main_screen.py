@@ -5,6 +5,7 @@ import math #access sin and cos
 import time
 from player import *
 from map import draw_map
+from floorcasting import floorcasting
 
 #initialise pygame
 pygame.init()
@@ -21,6 +22,8 @@ while run:
 
     #draw 2d map representation
     draw_map()
+    #pixels = floorcasting()
+    #screen.blit(pixels, (0,0))       
     pygame.display.flip()#updates screen every frame
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
 
