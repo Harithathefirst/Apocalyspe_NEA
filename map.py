@@ -40,19 +40,17 @@ def draw_map():
         #loop over map columns
         for column in range (8):
             #calculate square index for each square on map - where each square will go 
-            square = row * MAP_WIDTH + column
+            square = int((row * MAP_WIDTH + column)/2)
 
             #draw map in game window
             #pygame.draw.rect(surface,color,rect,optwidth)
             pygame.draw.rect(
                 screen,
                 (200, 200, 200) if MAP[square] == '#' else (100, 100, 100),#dark grey for the walls,light grey everywhere else
-                (column * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE),#actual size of the squares and position (x,y,width,height)
-                 width=1
-            
+                (column * TILE_SIZE, row * TILE_SIZE, TILE_SIZE - 1, TILE_SIZE - 1),#actual size of the squares and position (x,y,width,height)
             )  
 
-#print(MAP)
+print(MAP)
 
 #try:
      #print(MAP[square])
