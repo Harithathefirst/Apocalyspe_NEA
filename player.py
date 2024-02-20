@@ -41,3 +41,14 @@ def movement(event,speed,x_change,y_change):
 
 #def add(a,b):
     #return a+b
+
+class Player:
+    def __init__(self,x,y,speed):
+        self.x = x
+        self.y = y
+        self.speed = 8
+    
+    def move_forward(self,event,speed):
+            if event.key == pygame.K_w:
+                x_change = 0
+                y_change=-speed

@@ -23,9 +23,9 @@ while run:
 
     #draw 2d map representation
     draw_map()
-    #pixels = floorcasting()
-    #screen.blit(pixels, (0,0))       
-    pygame.display.flip()#updates screen every frame
+    pixels = floorcasting()
+    screen.blit(pixels, (0,0)) #draws the pixels frame onto the screen  
+    pygame.display.flip() #updates screen every frame
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
 
     
