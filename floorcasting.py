@@ -1,6 +1,8 @@
 import pygame
 import numpy as np
 
+
+
 def floorcasting():
     frame = np.random.uniform(0,1,(150,90,3))
 
