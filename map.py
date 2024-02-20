@@ -19,8 +19,14 @@ model_map = [
 #constants to do with map grid
 MAP_HEIGHT = 8
 MAP_WIDTH = 8
-TILE_SIZE = int((SCREEN_HEIGHT / MAP_WIDTH))
-print(TILE_SIZE)
+TILE_SIZE_width = int((SCREEN_WIDTH / MAP_WIDTH))
+TILE_SIZE_height = int((SCREEN_HEIGHT / MAP_WIDTH))
+print(TILE_SIZE_width)
+print(TILE_SIZE_height)
+print(TILE_SIZE_width*8)
+print(TILE_SIZE_height*8)
+print(SCREEN_WIDTH)
+print(SCREEN_HEIGHT)
  
 #visual representation of map
 MAP = (
@@ -48,7 +54,7 @@ def draw_map():
             pygame.draw.rect(
                 screen,
                 (100, 100, 100) if MAP[square] == '#' else (200, 200, 200),#ligth grey for the walls,dark grey everywhere else
-                (column * TILE_SIZE, row * TILE_SIZE, TILE_SIZE - 1, TILE_SIZE - 1),#actual size of the squares and position (x,y,width,height)
+                (column * TILE_SIZE_height, row * TILE_SIZE_width, TILE_SIZE_height- 1, TILE_SIZE_width - 1),#actual size of the squares and position (x,y,width,height)
             )  
 
 #print(MAP)
