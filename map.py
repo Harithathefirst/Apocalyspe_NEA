@@ -4,19 +4,96 @@ from settings import *
 
 #2d array
 #  _ = empty space
-""" _ = False
+_ = False
 model_map = [
 [1,1,1,1,1,1,1,1,1,1],
 [1,_,_,_,_,_,_,_,_,1],
 [1,_,_,_,1,_,_,_,_,1],
-[1,_,_,1,1,1,_,_,_,1],
-[1,_,_,_,_,_,_,_,_,1],
+[1,_,_,1,1,1,_,_,1,1],
+[1,_,_,_,_,_,_,_,1,1],
 [1,_,_,_,1,1,1,_,_,1],
 [1,_,_,_,_,_,1,_,_,1],
 [1,1,1,1,1,1,1,1,1,1],
-] """
+] 
 
-#constants to do with map grid
+class Map:
+    def __init__(self):
+        self.model_map=model_map #what the map should look like
+        self.worldmap = {} #dictionary to write the coordinated of any elements with numeric value
+        self.get_map() #
+
+    def get_map(self):
+        for j, row in enumerate(model_map):
+            for i, value in enumerate(row):
+                if value:
+                    self.worldmap[(i,j)] = value
+    def draw_map(self):
+        [pygame.draw.rect(screen,'darkgray',(pos[0] * 100, pos[1] * 100, 100, 100), 2)
+        for pos in self.worldmap]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" #constants to do with map grid
 MAP_HEIGHT = 8
 MAP_WIDTH = 8
 TILE_SIZE = int((SCREEN_WIDTH / MAP_WIDTH))
@@ -56,7 +133,7 @@ def draw_map():
 #try:
      #print(MAP[square])
 #except IndexError:
-      #print("out of range")
+      #print("out of range") """
       
 
  

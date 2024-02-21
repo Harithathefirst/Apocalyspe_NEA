@@ -52,3 +52,5 @@ class Player:
             if event.key == pygame.K_w:
                 x_change = 0
                 y_change=-speed
+
+
