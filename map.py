@@ -4,7 +4,7 @@ from settings import *
 
 #2d array
 #  _ = empty space
-_ = False
+_ = 0
 model_map = [
 [1,1,1,1,1,1,1,1,1,1],
 [1,_,_,_,_,_,_,_,_,1],
@@ -18,9 +18,9 @@ model_map = [
 
 class Map:
     def __init__(self):
-        self.model_map=model_map #what the map should look like
+        self.model_map = model_map #what the map should look like
         self.worldmap = {} #dictionary to write the coordinated of any elements with numeric value
-        self.get_map() #
+        self.get_map() 
 
     def get_map(self):
         for j, row in enumerate(model_map):
@@ -28,8 +28,9 @@ class Map:
                 if value:
                     self.worldmap[(i,j)] = value
     def draw_map(self):
-        [pygame.draw.rect(screen,'darkgray',(pos[0] * 150, pos[1] * 150, 100, 100), 2)       #RECT - (x,y,width,height)
+        [pygame.draw.rect(screen,'dark grey',(pos[0] * 100, pos[1] * 100, 100, 100), 2)       #RECT - (x,y,width,height)
         for pos in self.worldmap]
+
 
 
 
