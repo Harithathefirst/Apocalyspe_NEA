@@ -28,7 +28,7 @@ class Map:
                 if value:
                     self.worldmap[(i,j)] = value
     def draw_map(self):
-        [pygame.draw.rect(screen,'darkgray',(pos[0] * 100, pos[1] * 100, 100, 100), 2)
+        [pygame.draw.rect(screen,'darkgray',(pos[0] * 150, pos[1] * 150, 100, 100), 2)       #RECT - (x,y,width,height)
         for pos in self.worldmap]
 
 
