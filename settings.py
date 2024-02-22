@@ -4,7 +4,7 @@ RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 #1504/8 = 188
 #904/8 = 113
 FPS = 60
-PLAYER_INITIAL_POS = 1.5, 5 #on model_map 1 line is equal to 1
+PLAYER_INITIAL_POS = 9,7.5  #on model_map 1 line is equal to 1
 PLAYER_ANGLE = 0 #initial angle
 PLAYER_SPEED = 0.04 # players speed
 PLAYER_ROTATION_SPEED = 0.002 # speed that player can rotate "camera"

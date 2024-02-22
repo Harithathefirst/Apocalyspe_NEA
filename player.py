@@ -50,7 +50,7 @@ class Player:
                          RED,
                          (self.x * 100, self.y * 100),
                          (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
-        pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),20)
+        pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
 
 
 
