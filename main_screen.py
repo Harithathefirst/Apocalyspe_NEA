@@ -14,6 +14,9 @@ pygame.init()
 
 #create instance of map class
 map = Map()
+x=600
+y=300
+
 
 run=True
 #game runs in this loop
@@ -28,6 +31,7 @@ while run:
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
     screen.fill(BLACK)
     map.draw_map()
+    pygame.draw.circle(screen,GREEN,(x,y),10)
 
 
     #draw 2d map representation
