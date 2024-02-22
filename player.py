@@ -24,7 +24,7 @@ class Player:
     def movement(self):
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
-        dx,dy = 0 #initial coordinates
+        dx,dy = 0,0 #initial coordinates
         speed = PLAYER_SPEED*delta_time
 
         keys = pygame.key.get_pressed() #gets the state of all keyboard buttons
