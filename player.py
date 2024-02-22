@@ -25,7 +25,7 @@ class Player:
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
         dx,dy = 0,0 #initial coordinates
-        speed = PLAYER_SPEED*delta_time
+        speed = PLAYER_SPEED
 
         keys = pygame.key.get_pressed() #gets the state of all keyboard buttons
         if keys[pygame.K_w]:

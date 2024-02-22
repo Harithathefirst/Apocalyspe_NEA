@@ -4,10 +4,10 @@ RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 #1504/8 = 188
 #904/8 = 113
 FPS = 60
-PLAYER_INITIAL_POS = 1.5, 5 #model_map
-PLAYER_ANGLE = 0
-PLAYER_SPEED = 8
-PLAYER_ROTATION_SPEED = 0.002
+PLAYER_INITIAL_POS = 1.5, 5 #on model_map
+PLAYER_ANGLE = 0 #initial angle
+PLAYER_SPEED = 0.004 # players speed
+PLAYER_ROTATION_SPEED = 0.002 # speed that player can rotate "camera"
 delta_time = 1 #makes players speed indepenedent to the frame rate
 
 screen = pygame.display.set_mode(RES) #creates display surface and makes it fullscreen by resizing
