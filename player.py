@@ -25,7 +25,7 @@ class Player:
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
         dx,dy = 0,0 #initial coordinates
-        speed = PLAYER_SPEED
+        speed = PLAYER_SPEED * delta_time
 
         keys = pygame.key.get_pressed() #gets the state of all keyboard buttons
         if keys[pygame.K_w]:
@@ -43,6 +43,14 @@ class Player:
 
         self.x += dx #adds on moveemnt to initial player y pos
         self.y += dy #adds on movement to initial player x pos
+ 
+        #rotation will be with mouse 
+        if keys[pygame.K_LEFT]:
+              self.angle -= PLAYER_ROTATION_SPEED #* delta_time #rotate to the left
+        if keys[pygame.K_RIGHT]:
+              self.angle += PLAYER_ROTATION_SPEED #* delta_time 
+        self.angle %= 2 * math.pi
+
 
     def draw_player(self):
         #pg.draw.line(surface,colour,start(x,y),end(x,y),width)

@@ -14,7 +14,7 @@ pygame.init()
 
 #create instance of classes
 map = Map() #map class
-player1 = Player()
+player = Player()
 
 
 run=True
@@ -30,8 +30,8 @@ while run:
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
     screen.fill(BLACK)
     map.draw_map()
-    player1.movement()
-    player1.draw_player()
+    player.movement()
+    player.draw_player()
 
 
 
