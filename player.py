@@ -1,18 +1,11 @@
 import pygame
 from settings import *
 import math
+from map import *
 
-""" 
-class Player:
-    def __init__(self,x,y,speed):
-        self.x = x
-        self.y = y
-        self.speed = 8
-    
-    def move_forward(self,event,speed):
-            if event.key == pygame.K_w:
-                x_change = 0
-                y_change=-speed """
+#make instance of map class
+#checkmap = Map()
+#map.draw_map()
 
 class Player:
     def __init__(self):
@@ -59,6 +52,10 @@ class Player:
                          (self.x * 100, self.y * 100),
                          (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
         pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
+
+    
+          
+          
 
 
 
