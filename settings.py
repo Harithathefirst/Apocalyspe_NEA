@@ -6,7 +6,7 @@ RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 FPS = 60
 PLAYER_INITIAL_POS = 1.5, 5 #on model_map
 PLAYER_ANGLE = 0 #initial angle
-PLAYER_SPEED = 0.004 # players speed
+PLAYER_SPEED = 0.04 # players speed
 PLAYER_ROTATION_SPEED = 0.002 # speed that player can rotate "camera"
 delta_time = 1 #makes players speed indepenedent to the frame rate
 
