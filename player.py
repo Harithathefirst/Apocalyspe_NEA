@@ -46,9 +46,9 @@ class Player:
  
         #rotation will be with mouse 
         if keys[pygame.K_LEFT]:
-              self.angle -= PLAYER_ROTATION_SPEED #* delta_time #rotate to the left
+              self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
         if keys[pygame.K_RIGHT]:
-              self.angle += PLAYER_ROTATION_SPEED #* delta_time 
+              self.angle += PLAYER_ROTATION_SPEED * delta_time 
         self.angle %= 2 * math.pi
 
 
