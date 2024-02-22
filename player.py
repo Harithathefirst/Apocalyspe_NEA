@@ -16,12 +16,12 @@ class Player:
 
 class Player:
     def __init__(self):
-        self.x = PLAYER_INITIAL_POS
-        self.y = PLAYER_INITIAL_POS
+        self.x,self.y = PLAYER_INITIAL_POS 
         self.angle = PLAYER_ANGLE
         self.rotspeed = PLAYER_ROTATION_SPEED
+    
 
-    def movement(self,event):
+    def movement(self):
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
         dx,dy = 0 #initial coordinates
@@ -45,7 +45,12 @@ class Player:
         self.y += dy #adds on movement to initial player x pos
 
     def draw_player(self):
-          pygame.draw.line
+        #pg.draw.line(surface,colour,start(x,y),end(x,y),width)
+        pygame.draw.line(screen,
+                         RED,
+                         (self.x * 100, self.y * 100),
+                         (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
+        pygame.draw.circle(screen,GREEN,self.x*100,self.y*100,20)
 
 
 

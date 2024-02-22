@@ -12,10 +12,9 @@ from floorcasting import *
 #initialise pygame
 pygame.init()
 
-#create instance of map class
-map = Map()
-x=600
-y=300
+#create instance of classes
+map = Map() #map class
+player1 = Player()
 
 
 run=True
@@ -31,7 +30,9 @@ while run:
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
     screen.fill(BLACK)
     map.draw_map()
-    pygame.draw.circle(screen,GREEN,(x,y),10)
+    player1.movement()
+    player1.draw_player()
+
 
 
     #draw 2d map representation
