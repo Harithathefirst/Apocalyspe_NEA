@@ -4,6 +4,7 @@ from settings import *
 
 #2d array
 #  _ = empty space
+
 _ = 0
 model_map = [
 [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -32,6 +33,9 @@ class Map:
     def draw_map(self):
         [pygame.draw.rect(screen,'dark grey',(pos[0] * 100, pos[1] * 100, 100, 100), 2)       #RECT - (x,y,width,height)
         for pos in self.worldmap]
+
+    
+
 
 
 

@@ -10,12 +10,12 @@ screen = pygame.display.set_mode(RES) #creates display surface and makes it full
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate
 
-""" #circle starting coordinates
+#circle starting coordinates#
 x=200
 y=200
-x_change = 0
+""" x_change = 0
 y_change = 0
-speed = 8 """
+speed = 8  """
 
 
 run=True
@@ -39,8 +39,8 @@ while run:
         
 
 
-    screen.fill(BLACK)
-    #pygame.draw.circle(screen,RED,(x,y),30)
+    #screen.fill(BLACK)
+    pygame.draw.circle(screen,RED,(x,y),30)
     pygame.display.flip()#updates screen every frame
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second  
  

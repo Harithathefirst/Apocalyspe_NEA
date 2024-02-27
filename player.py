@@ -3,10 +3,6 @@ from settings import *
 import math
 from map import *
 
-#make instance of map class
-#checkmap = Map()
-#map.draw_map()
-
 class Player:
     def __init__(self):
         self.x,self.y = PLAYER_INITIAL_POS 
@@ -18,19 +14,23 @@ class Player:
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
         dx,dy = 0,0 #initial coordinates
-        speed = PLAYER_SPEED * delta_time
+        speed = PLAYER_SPEED * delta_time #speed of the player independent of the frame rate
 
         keys = pygame.key.get_pressed() #gets the state of all keyboard buttons
         if keys[pygame.K_w]:
+                #move in the forward direction
                 dx += speed*cos_A
                 dy += speed*sin_A
         elif keys[pygame.K_a]:
+                #move in the left direction
                 dx += speed*sin_A
                 dy += -(speed*cos_A)
         elif keys[pygame.K_s]:
+                #move in the backward direction
                 dx+= -(speed*cos_A)
                 dy+=-(speed*sin_A)
         elif keys[pygame.K_d]:
+                #move in the right direction
                 dx+= -(speed*sin_A)
                 dy+= speed*cos_A
 
@@ -41,10 +41,10 @@ class Player:
         if keys[pygame.K_LEFT]:
               self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
         if keys[pygame.K_RIGHT]:
-              self.angle += PLAYER_ROTATION_SPEED * delta_time 
-        self.angle %= 2 * math.pi
+              self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
+        self.angle %= 2 * math.pi #stores players angle as the result of modding 360
 
-
+    #draws the player and a line from the front of the player
     def draw_player(self):
         #pg.draw.line(surface,colour,start(x,y),end(x,y),width)
         pygame.draw.line(screen,
@@ -52,6 +52,11 @@ class Player:
                          (self.x * 100, self.y * 100),
                          (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
         pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
+
+    def check_wall(self):
+          pass
+          
+          
 
     
           
@@ -61,8 +66,10 @@ class Player:
 
 
 
-""" ef movement(event,speed,x_change,y_change):
- #WASD CONTROLS
+
+
+def movement(speed,x,y,x_change,y_change):
+    for event in pygame.event.get:
         if event.type == pygame.KEYDOWN:
             #W - move forards
             if event.key == pygame.K_w:
@@ -98,10 +105,4 @@ class Player:
                 x_change=0
                 y_change=0
             return x_change,y_change
- """
-
-#def add(a,b):
-    #return a+b
-
-
 
