@@ -2,6 +2,9 @@ import pygame
 from settings import *
 import math
 from map import *
+import sys
+
+m = Map()
 
 class Player:
     def __init__(self):
@@ -34,8 +37,10 @@ class Player:
                 dx+= -(speed*sin_A)
                 dy+= speed*cos_A
 
-        self.x += dx #adds on moveemnt to initial player y pos
-        self.y += dy #adds on movement to initial player x pos
+        #self.x += dx #adds on moveemnt to initial player y pos
+        #self.y += dy #adds on movement to initial player x pos
+
+        self.collision(dx,dy)
  
         #rotation will be with mouse 
         if keys[pygame.K_LEFT]:
@@ -52,23 +57,37 @@ class Player:
                          (self.x * 100, self.y * 100),
                          (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
         pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
+        
+    def check_wall(self,x,y):
+        return (x,y) not in m.worldmap
 
-    def check_wall(self):
-          pass
+    def collision(self,dx,dy):
+          if self.check_wall(int(self.x + dx),int(self.y)):
+                self.x += dx
+          if self.check_wall(int(self.x),int(self.y + dy)):
+                self.y += dy
           
-          
-
     
+
           
+"""           
+m = Map()
+
+while True:
+    for event in pygame.event.get():
+          if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+    m.draw_map()
+    pygame.display.flip()
+     """
           
+ 
+      
+      
 
 
-
-
-
-
-
-def movement(speed,x,y,x_change,y_change):
+""" def movement(speed,x,y,x_change,y_change):
     for event in pygame.event.get:
         if event.type == pygame.KEYDOWN:
             #W - move forards
@@ -104,5 +123,5 @@ def movement(speed,x,y,x_change,y_change):
             elif event.key == pygame.K_d:
                 x_change=0
                 y_change=0
-            return x_change,y_change
+            return x_change,y_change  """
 

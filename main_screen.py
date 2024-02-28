@@ -18,7 +18,7 @@ player = Player() #player class
 
 
 
-""" run=True
+run=True
 #game runs in this loop
 #FONT = pygame.font.SysFont('Horta',35)
 #text = FONT.render('quit' , True , RED) 
@@ -37,11 +37,11 @@ while run:
     screen.fill(BLACK)
     map.draw_map()
     player.movement()
-    player.draw_player() """
+    player.draw_player()
     
 
 
-class Game:
+""" class Game:
     def __init__(self):
         self.map = Map()
         self.player = Player()
@@ -52,33 +52,29 @@ class Game:
                 run=False
             pygame.quit()
             sys.exit(0) # closes the while loop 
+    
+    def update(self):
         pygame.display.flip()
-        clock.tick(FPS)
-        screen.fill(BLACK)
-
-        
     
     def main_game_loop(self):
         for event in pygame.event.get():
-            self.check_quit()
             self.map.draw_map()
             self.player.movement()
             self.player.draw_player()
- 
 
 
 
 game = Game()
 
-while __name__ == "__main__":
-    game.main_game_loop()
+if __name__ == "__main__":
+    game.main_game_loop
 
 
 
 
 
 
-
+ """
 
 
 
