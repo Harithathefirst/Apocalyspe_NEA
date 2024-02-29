@@ -25,7 +25,6 @@ run=True
 
 #main game loop
 while run:
-    #play_game()
     #close game condition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -36,7 +35,9 @@ while run:
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
     screen.fill(BLACK)
     map.draw_map()
-    player.movement()
+    #player.move()
+    player.moving()
+  
     player.draw_player()
     
 
