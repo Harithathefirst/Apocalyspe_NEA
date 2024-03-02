@@ -19,7 +19,9 @@ pygame.init()
 map = Map() #map class
 player = Player() #player class
 
-
+""" filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
+logo = pygame.image.load(filepath)
+logo = pygame.transform.scale(logo,TITLE_IMAGE_SIZE) """
 #logo = pygame.image.load('title.png')
 
 
@@ -38,24 +40,23 @@ while run:
             run=False
             pygame.quit()
             sys.exit(0) # closes the while loop 
-
+    pygame.display.flip() #updates screen every frame
+    screen.fill(BLACK) 
     map.draw_map()
     player.moving()
-    #player.moving()
-    #"C:\Users\bindu\OneDrive - Bright Futures Educational Trust\Alevel\CS NEA\documentcode_git\Apocalyspe_NEA\title.png"
-  
+    screen.blit(player.square,player.rect)
+    
     #player.draw_player()
-    
-    
-    screen.blit(player.player,player.rect)
-    #screen.fill(BLACK)
-    pygame.display.flip() #updates screen every frame
-clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
+    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
     
    
 
     #screen.blit(logo,(100,100))
-
+  
+    #player.moving()
+    #"C:\Users\bindu\OneDrive - Bright Futures Educational Trust\Alevel\CS NEA\documentcode_git\Apocalyspe_NEA\title.png"
+  
+    
     
 
 
