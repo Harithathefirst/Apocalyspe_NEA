@@ -8,9 +8,12 @@ m = Map()
 
 class Player:
     def __init__(self):
-        self.x,self.y = PLAYER_INITIAL_POS 
         self.angle = PLAYER_ANGLE
         self.rotspeed = PLAYER_ROTATION_SPEED
+        self.player = pygame.Surface((50,50))
+        self.rect = self.player.get_rect()
+        self.x = 500
+        self.y = 500
     
 
     def movement(self):
@@ -56,16 +59,14 @@ class Player:
       
 
     def moving(self):
-        t=100
-        while t >= 100:
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_w]:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
                 self.move(0,-10)
-            if keys[pygame.K_a]:
+        if keys[pygame.K_a]:
                 self.move(-10,0)
-            if keys[pygame.K_s]:
+        if keys[pygame.K_s]:
                 self.move(0,10)              
-            if keys[pygame.K_d]:
+        if keys[pygame.K_d]:
                 self.move(10,0)
         
         if keys[pygame.K_LEFT]:
@@ -74,7 +75,7 @@ class Player:
               self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
         self.angle %= 2 * math.pi #stores players angle as the result of modding 360
 
-        t =- 1
+        
 
     #draws the player and a line from the front of the player
     def draw_player(self):
