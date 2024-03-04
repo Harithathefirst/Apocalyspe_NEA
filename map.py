@@ -25,15 +25,15 @@ class Map:
         self.get_map() 
 
     def get_map(self):
-        for j, row in enumerate(model_map):
+        for j, row in enumerate(model_map): #l
             for i, value in enumerate(row):
                 if value:
-                    self.worldmap[(i,j)] = value
+                    self.worldmap[(i,j)] = value #writes value into dictionary if there is a numerical value - 1
     
 
     def draw_map(self):
         [pygame.draw.rect(screen,'white',(pos[0] * 100, pos[1] * 100, 100, 100), 2)       #RECT - (x,y,width,height)
-        for pos in self.worldmap]
+        for pos in self.worldmap] #draws 100x100 grid where there is 1 in dictionary
         
     
 

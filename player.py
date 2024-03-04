@@ -53,8 +53,11 @@ class Player:
               self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
         self.angle %= 2 * math.pi #stores players angle as the result of modding 360
 
+
+        
+
     def move(self,dx,dy):
-         speed = PLAYER_SPEED*10
+         
          self.rect.x += dx*speed
          self.rect.y += dy*speed
 
@@ -62,15 +65,26 @@ class Player:
       
 
     def moving(self):
+        speed = PLAYER_SPEED*10
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-                self.move(0,-10)
+                #self.move(0,-10)
+                self.rect.x += 0*speed
+                self.rect.y += -10*speed
         if keys[pygame.K_a]:
-                self.move(-10,0)
+                self.rect.x += -10*speed
+                self.rect.y += 0*speed
+                #self.move(-10,0)
         if keys[pygame.K_s]:
-                self.move(0,10)              
+              self.rect.x += 0*speed
+              self.rect.y += 10*speed
+                #self.move(0,10)              
         if keys[pygame.K_d]:
-                self.move(10,0)
+              self.rect.x += 10*speed
+              self.rect.y += 0*speed
+                #self.move(10,0)
+        self.collision(dx,dy)     
+        
         
         #if keys[pygame.K_LEFT]:
               #self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
@@ -87,26 +101,26 @@ class Player:
                          RED,
                          (self.x * 100, self.y * 100),
                          (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
-        #pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
+        pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
 
     def position_current(self): #players current positiopn on map
-          return self.rect.x,self.rect.y
+          return self.x,self.y
     
     def position_map(self): #returns map tile player is on 
-          return int(self.rect.x),int(self.rect.y)
+          return int(self.x),int(self.y)
           
     
         
     def check_wall(self,x,y): #takes in x and y coordniates of the player
-        if (self.rect.x,self.rect.y) not in m.worldmap:#returns the coordinates of the player if it is not where there is 1 on map - a wall
-              return (self.rect.x,self.rect.y)
+        if (x,y) not in m.worldmap:#returns the coordinates of the player if it is not where there is 1 on map - a wall
+              return (x,y)
         
 
     def collision(self,dx,dy): #takes in the players calculated dx and dy
-          if self.check_wall(int(self.rect.x + dx),int(self.rect.y)): #allows movement on the x axis if x coordinate is not at a wall 
-                self.rect.x += dx #adds on the calculated dx - can move in x direction
-          if self.check_wall(int(self.rect.x),int(self.rect.y + dy)): #allows movement if y coordinate is not at a wall
-                self.rect.y += dy #adds on calculated dy -can move in y direction
+          if self.check_wall(int(self.rect.x + dx),int(self.y)): #allows movement on the x axis if x coordinate is not at a wall 
+                self.x += dx #adds on the calculated dx - can move in x direction
+          if self.check_wall(int(self.x),int(self.y + dy)): #allows movement if y coordinate is not at a wall
+                self.y += dy #adds on calculated dy -can move in y direction
           
 
 

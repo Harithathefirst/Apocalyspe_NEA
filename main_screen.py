@@ -41,10 +41,13 @@ while run:
             pygame.quit()
             sys.exit(0) # closes the while loop 
     pygame.display.flip() #updates screen every frame
-    #screen.fill(BLACK)
-    player.draw_player() 
+    screen.fill(BLACK)#
     map.draw_map()
+    player.draw_player() 
     player.movement()
+
+
+
     #player.move()
     #print(player.collision(player.dx,player.dy))
     #print(player.position_current())
