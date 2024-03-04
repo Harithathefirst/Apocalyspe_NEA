@@ -8,7 +8,7 @@ FPS= 60
 
 PLAYER_INITIAL_POS = 9,7.5  #on model_map 1 line is equal to 1
 PLAYER_ANGLE = 0 #initial angle
-PLAYER_SPEED = 0.04 # players speed
+PLAYER_SPEED = 0.01 # players speed
 PLAYER_ROTATION_SPEED = 0.02 # speed that player can rotate "camera"
 delta_time = 1 #makes players speed indepenedent to the frame rate
 
@@ -19,7 +19,7 @@ HALF_NUM_RAYS = NUM_RAYS // 2 #half of number of rays
 DELTA_ANGLE = FOV / NUM_RAYS #angle between each ray
 MAX_DEPTH = 20 #draw distance
 
-screen = pygame.display.set_mode(RES) #creates display surface and makes it fullscreen by resizing
+screen = pygame.display.set_mode(RES)#creates display surface and makes it fullscreen by resizing
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate 
 

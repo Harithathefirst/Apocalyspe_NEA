@@ -14,8 +14,7 @@ class Player:
         self.square = pygame.Surface((50,50))
         self.square.fill(GREEN)
         self.rect = self.square.get_rect()
-        self.rect.x = 500
-        self.rect.y = 500
+        self.rect.x,self.rect.y = PLAYER_INITIAL_POS
     
 
     def movement(self):
@@ -58,18 +57,20 @@ class Player:
          speed = PLAYER_SPEED*10
          self.rect.x += dx*speed
          self.rect.y += dy*speed
+
+         self.collision(dx,dy)
       
 
     def moving(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-                self.move(0,-20)
+                self.move(0,-10)
         if keys[pygame.K_a]:
-                self.move(-20,0)
+                self.move(-10,0)
         if keys[pygame.K_s]:
-                self.move(0,20)              
+                self.move(0,10)              
         if keys[pygame.K_d]:
-                self.move(20,0)
+                self.move(10,0)
         
         #if keys[pygame.K_LEFT]:
               #self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
@@ -89,10 +90,10 @@ class Player:
         #pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
 
     def position_current(self): #players current positiopn on map
-          return self.x,self.y
+          return self.rect.x,self.rect.y
     
     def position_map(self): #returns map tile player is on 
-          return int(self.x),int(self.y)
+          return int(self.rect.x),int(self.rect.y)
           
     
         
@@ -107,8 +108,6 @@ class Player:
           if self.check_wall(int(self.rect.x),int(self.rect.y + dy)): #allows movement if y coordinate is not at a wall
                 self.rect.y += dy #adds on calculated dy -can move in y direction
           
-    
-
 
 
           

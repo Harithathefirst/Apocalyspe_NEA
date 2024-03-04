@@ -41,10 +41,16 @@ while run:
             pygame.quit()
             sys.exit(0) # closes the while loop 
     pygame.display.flip() #updates screen every frame
-    screen.fill(BLACK) 
+    #screen.fill(BLACK)
+    player.draw_player() 
     map.draw_map()
-    player.moving()
-    screen.blit(player.square,player.rect)
+    player.movement()
+    #player.move()
+    #print(player.collision(player.dx,player.dy))
+    #print(player.position_current())
+    #print(player.position_map())   
+    #screen.blit(player.square,player.rect)
+    
     
     #player.draw_player()
     clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
