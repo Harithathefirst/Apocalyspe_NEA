@@ -12,8 +12,8 @@ class Player:
         self.angle = PLAYER_ANGLE
         self.rotspeed = PLAYER_ROTATION_SPEED
         self.speed = 0.05
-        self.x_change = 0
-        self.y_change = 0
+        #self.x_change = 0
+        #self.y_change = 0
         #self.square = pygame.Surface((50,50))
         #self.square.fill(GREEN)
         #self.rect = self.square.get_rect()
@@ -69,6 +69,8 @@ class Player:
 
     
     def movement(self):
+        self.x_change = 0
+        self.y_change = 0
         keys = pygame.key.get_pressed()
                     #W - move forards
         if keys[pygame.K_w]:
@@ -89,14 +91,14 @@ class Player:
               self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
         if keys[pygame.K_RIGHT]:
               self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
-        self.angle %= 2 * math.pi #stores players angle as the result of modding 360
+        self.angle %= 2 * math.pi #stores players new angle as the result of modding 360
 
         
                
 
         self.collision(self.x,self.y)
 
-        return self.x_change,self.y_change
+        return self.angle,self.x_change,self.y_change
     
     def moving(self):
         self.x += self.x_change

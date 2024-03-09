@@ -52,7 +52,6 @@ while run:
     player.draw_player() 
     print(player.x,player.y)
     print(player.movement())
-    print(player.stop_moving())
     #player.stop_moving()
     #player.moving()
     #player.moving()
