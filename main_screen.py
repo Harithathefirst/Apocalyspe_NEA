@@ -10,6 +10,7 @@ from player import *
 from map import *
 from main_menu import play_game
 from buttons import *
+from raycasting import *
 
 
 #initialise pygame
@@ -19,10 +20,12 @@ pygame.init()
 map = Map() #map class
 player = Player() #player class
 
-""" filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
+filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
 logo = pygame.image.load(filepath)
-logo = pygame.transform.scale(logo,TITLE_IMAGE_SIZE) """
-#logo = pygame.image.load('title.png')
+logo = pygame.transform.scale_by(logo,2) 
+gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
+
+#gun = pygame.image.load('title_gun.png')
 
 
 run=True
@@ -33,18 +36,28 @@ run=True
 #main game loop
 while run:
     #screen.fill(MAIN_PURPLE)
-    #screen.blit(logo,(500,500))
+    #screen.blit(logo,(SCREEN_WIDTH/2 /10 ,0))
+    #screen.blit(gun,SCREEN_WIDTH/2)
     #close game condition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run=False
             pygame.quit()
             sys.exit(0) # closes the while loop 
+            
     pygame.display.flip() #updates screen every frame
-    screen.fill(BLACK)#
+    screen.fill(BLACK)
     map.draw_map()
-    player.draw_player() 
     player.movement()
+    player.draw_player() 
+    print(player.x,player.y)
+    print(player.movement())
+    print(player.stop_moving())
+    #player.stop_moving()
+    #player.moving()
+    #player.moving()
+    #screen.blit()
+    #raycast()
 
 
 

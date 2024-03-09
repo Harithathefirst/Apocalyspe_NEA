@@ -6,6 +6,7 @@ RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 #904/8 = 113
 FPS= 60
 
+#map coordinates
 PLAYER_INITIAL_POS = 9,7.5  #on model_map 1 line is equal to 1
 PLAYER_ANGLE = 0 #initial angle
 PLAYER_SPEED = 0.04 # players speed
@@ -30,5 +31,6 @@ GREEN = (0,255,0)
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 MAIN_PURPLE =(51, 0, 123)
+USERNAME_BLUE = (0, 179, 255)
 
 TITLE_IMAGE_SIZE = (500,500)
