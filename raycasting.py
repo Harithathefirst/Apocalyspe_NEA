@@ -7,7 +7,7 @@ from player import *
 player = Player() #make instance of player
 
             
-""" def raycast():
+def raycast():
     ox, oy = player.position_current #map coordinates
     x_map,y_map = player.position_map # players position on map grid lines
     #angle for first ray
@@ -59,26 +59,26 @@ player = Player() #make instance of player
 
           ray_angle += DELTA_ANGLE
           #ray_angle = PLAYER_ANGLE
-       """
+       
 
 
-def raycasting():
-    #define the starting angle - left most ray
-    start_angle  = player.angle + HALF_FOV + 0.0001
+# def raycasting():
+#     #define the starting angle - left most ray
+#     start_angle  = player.angle + HALF_FOV + 0.0001
 
-    # loop over total rays from player
-    for ray in range(NUM_RAYS):
-        #cast ray step by step
-        for depth in range (MAX_DEPTH):
-            #target x coordinate of wall
-            #get ray target coordinates
-            target_x = player.x*100 + math.sin(start_angle) * depth*100
-            target_y = player.y*100 + math.cos(start_angle) * depth*100
+#     # loop over total rays from player
+#     for ray in range(NUM_RAYS):
+#         #cast ray step by step
+#         for depth in range (MAX_DEPTH):
+#             #target x coordinate of wall
+#             #get ray target coordinates
+#             target_x = player.x*100 + math.sin(start_angle) * depth*100
+#             target_y = player.y*100 + math.cos(start_angle) * depth*100
 
-            pygame.draw.line(screen,'yellow',(player.x*100,player.y*100),
-                    (target_x,target_y))
+#             pygame.draw.line(screen,'yellow',(player.x*100,player.y*100),
+#                     (target_x,target_y))
             
-    #increment angle by single step of ray 
-    start_angle += DELTA_ANGLE
+#     #increment angle by single step of ray 
+#     start_angle += DELTA_ANGLE
     
 
