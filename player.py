@@ -126,9 +126,9 @@ class Player:
     def draw_player(self):
       #pygame.draw.line(surface,colour,start(x,y),end(x,y),width)
       pygame.draw.line(screen,
-                        'yellow',
+                        RED,
                         (self.x * 100, self.y * 100),
-                        (self.x * 100 + SCREEN_WIDTH * math.cos(self.angle), self.y * 100 + SCREEN_WIDTH * math.sin(self.angle)),2)
+                        (self.x * 100 +  math.cos(self.angle), self.y * 100 + math.sin(self.angle)),2)
       pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
 
   

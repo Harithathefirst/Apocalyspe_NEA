@@ -7,7 +7,7 @@ from player import *
 player = Player() #make instance of player
 
             
-def raycast():
+""" def raycast():
     ox, oy = player.position_current #map coordinates
     x_map,y_map = player.position_map # players position on map grid lines
     #angle for first ray
@@ -59,5 +59,9 @@ def raycast():
 
           ray_angle += DELTA_ANGLE
           #ray_angle = PLAYER_ANGLE
-      
+       """
+
+
+def raycasting():
+    
 
