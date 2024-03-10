@@ -23,38 +23,38 @@ class Player:
     def movement(self):
         sin_A = math.sin(self.angle) #calculates sin of the angle a
         cos_A = math.cos(self.angle)#cos angle a  
-        #dx,dy = 0,0 #initial coordinates
-        #speed = PLAYER_SPEED * delta_time #speed of the player independent of the frame rate
+        dx,dy = 0,0 #initial coordinates
+        speed = PLAYER_SPEED * delta_time #speed of the player independent of the frame rate
 
         keys = pygame.key.get_pressed() #gets the state of all keyboard buttons
-        #if keys[pygame.K_w]:
+        if keys[pygame.K_w]:
             #move in the forward direction
-         #   dx += speed*cos_A
-          #  dy += speed*sin_A
-       # elif keys[pygame.K_a]:
+           dx += -(speed*cos_A)
+           dy += -(speed*sin_A)
+        elif keys[pygame.K_a]:
             #move in the left direction
-        #    dx += speed*sin_A
-         #   dy += -(speed*cos_A)
-        #elif keys[pygame.K_s]:
-            #move in the backward direction
-          #  dx+= -(speed*cos_A)
-         #   dy+=-(speed*sin_A)
-        #elif keys[pygame.K_d]:
+            dx += -(speed*sin_A)
+            dy += (speed*cos_A)
+        elif keys[pygame.K_s]:
+           #move in the backward direction
+            dx+= speed*cos_A
+            dy+= speed*sin_A
+        elif keys[pygame.K_d]:
             #move in the right direction
-          #  dx+= -(speed*sin_A)
-         #   dy+= speed*cos_A
+            dx+= speed*sin_A
+            dy+= -(speed*cos_A)
 
         #self.x += dx #adds on moveemnt to initial player y pos
         #self.y += dy #adds on movement to initial player x pos
 
-        #self.collision(dx,dy)
+        self.collision(dx,dy)
         
         #rotation will be with mouse 
-        if keys[pygame.K_LEFT]:
-            self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
-        if keys[pygame.K_RIGHT]:
-            self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
-        self.angle %= 2 * math.pi #players angle should remain between 0-360
+        #if keys[pygame.K_LEFT]:
+         #   self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
+        #if keys[pygame.K_RIGHT]:
+        #    self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
+        #self.angle %= 2 * math.pi #players angle should remain between 0-360
 
     
 
@@ -63,13 +63,13 @@ class Player:
       #pygame.draw.line(surface,colour,start(x,y),end(x,y),width)
       pygame.draw.circle(screen,GREEN,(self.x*100,self.y*100),15)
       pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
-                        (self.x*100 + math.sin(self.angle) * 50,self.y*100 + math.cos(self.angle) * 50),2)
+                       (self.x*100 + math.sin(self.angle) * 50,self.y*100 + math.cos(self.angle) * 50),2)
       #draw FOV
-      pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
-                        (self.x*100 + math.sin(self.angle - HALF_FOV) * 50,self.y*100 + math.cos(self.angle - HALF_FOV) * 50),2)
+     # pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
+      #                  (self.x*100 + math.sin(self.angle - HALF_FOV) * 50,self.y*100 + math.cos(self.angle - HALF_FOV) * 50),2)
       
-      pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
-                        (self.x*100 + math.sin(self.angle + HALF_FOV) * 50,self.y*100 + math.cos(self.angle + HALF_FOV) * 50),2)
+      #pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
+       #                 (self.x*100 + math.sin(self.angle + HALF_FOV) * 50,self.y*100 + math.cos(self.angle + HALF_FOV) * 50),2)
       
       
 
@@ -77,27 +77,37 @@ class Player:
           keys = pygame.key.get_pressed()
           if keys[pygame.K_LEFT]:self.angle += 0.1
           elif keys[pygame.K_RIGHT]: self.angle -= 0.1 
-          print(self.angle)
+          #print(self.angle)
 
     def raycasting(self):
     #define the starting angle - left most ray
           start_angle  = self.angle + HALF_FOV + 0.0001
 
     # loop over total rays from player
-          for ray in range(NUM_RAYS):
+          for ray in range(10):
         #cast ray step by step
             for depth in range (MAX_DEPTH):
             #target x coordinate of wall
             #get ray target coordinates
                   target_x = self.x*100 + math.sin(start_angle) * depth*100
+                  if int(target_x) in m.worldmap:
+                        break
+                  target_x = self.x*100 + math.sin(start_angle)*depth*100
                   target_y = self.y*100 + math.cos(start_angle) * depth*100
+                  if int(target_y) in m.worldmap:
+                        break
+                  target_y = self.y*100 + math.cos(start_angle) * depth*100
+                  
 
             pygame.draw.line(screen,'yellow',(self.x*100,self.y*100),
                     (target_x,target_y))
             
     #increment angle by single step of ray 
             start_angle += DELTA_ANGLE
-    
+            print(target_x)
+            print(target_y)
+
+
 
     @property
     def position_current(self): #players current positiopn on map

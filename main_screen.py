@@ -50,7 +50,8 @@ while run:
     screen.fill(BLACK)
     map.draw_map()
     player.rotate()
-    player.raycasting()
+    #player.raycasting()
+    player.movement()
     #print(player.rotate()) 
     player.draw_player()
     
