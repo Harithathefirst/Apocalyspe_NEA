@@ -49,9 +49,11 @@ while run:
     pygame.display.flip() #updates screen every frame
     screen.fill(BLACK)
     map.draw_map()
-    #raycast()
-    player.movement1()
-    player.draw_player() 
+    player.rotate()
+    player.raycasting()
+    #print(player.rotate()) 
+    player.draw_player()
+    
     
     #print(raycast())
     #print(player.x,player.y)
