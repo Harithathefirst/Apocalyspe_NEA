@@ -82,19 +82,15 @@ class Player:
                     #W - move forards
         if keys[pygame.K_w]:
                     self.y_change=-self.speed
-                    self.angle = -(math.pi/2)
             #A - move to the left
         elif keys[pygame.K_a]:
                     self.x_change=-self.speed
-                    self.angle = -(math.pi)
             #S - move backwards
         elif keys[pygame.K_s]:
                     self.y_change=self.speed
-                    self.angle = math.pi
             #D- move to the right
         elif keys[pygame.K_d]:
                     self.x_change=self.speed
-                    self.angle = 0
          
 
                 #rotation will be with mouse 

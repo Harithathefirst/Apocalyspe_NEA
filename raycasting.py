@@ -1,5 +1,4 @@
 import pygame
-import sys
 import math #access sin and cos
 from settings import *
 from player import *
@@ -55,9 +54,10 @@ def raycast():
           else:
                  depth = depth_hor
 
-          pygame.draw.line(screen,'yellow',(100*ox,100*oy),(100*ox + 100 * depth * cos_ray_angle,100 * oy + 100 * depth * sin_ray_angle),2)    
+          pygame.draw.line(screen,'yellow',(100*ox,100*oy),
+                          (100 * ox + 100 * depth * cos_ray_angle, 100 * oy + 100 * depth * sin_ray_angle),2)    
 
           ray_angle += DELTA_ANGLE
-         # return ray_angle
+          #ray_angle = PLAYER_ANGLE
       
 
