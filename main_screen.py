@@ -14,16 +14,17 @@ from raycasting import *
 
 
 #initialise pygame
-pygame.init()
+#pygame.init()
+
 
 #create instance of classes
 map = Map() #map class
 player = Player() #player class
 
-filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
-logo = pygame.image.load(filepath)
-logo = pygame.transform.scale_by(logo,2) 
-gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
+#filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
+#logo = pygame.image.load(filepath)
+##logo = pygame.transform.scale_by(logo,2) 
+#gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
 
 #gun = pygame.image.load('title_gun.png')
 
@@ -48,30 +49,21 @@ while run:
     pygame.display.flip() #updates screen every frame
     screen.fill(BLACK)
     map.draw_map()
-    player.movement()
+    player.movement1()
     player.draw_player() 
-    print(player.x,player.y)
-    print(player.movement())
+    raycast()
+    #print(raycast())
+    #print(player.x,player.y)
+    #print(player.movement())
     #player.stop_moving()
     #player.moving()
     #player.moving()
     #screen.blit()
     #raycast()
-
-
-
-    #player.move()
-    #print(player.collision(player.dx,player.dy))
-    #print(player.position_current())
-    #print(player.position_map())   
-    #screen.blit(player.square,player.rect)
-    
-    
-    #player.draw_player()
-    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second
+    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
     
    
-
+ 
     #screen.blit(logo,(100,100))
   
     #player.moving()
@@ -83,8 +75,10 @@ while run:
 
 """ class Game:
     def __init__(self):
+    pygame.init()
         self.map = Map()
         self.player = Player()
+        self.clock = clock
     
     def check_quit(self):
         for event in pygame.event.get():
@@ -95,26 +89,66 @@ while run:
     
     def update(self):
         pygame.display.flip()
+        self.clock.tick(FPS)
     
     def main_game_loop(self):
         for event in pygame.event.get():
             self.map.draw_map()
-            self.player.movement()
+            self.player.movement1()
             self.player.draw_player()
-
+            raycast()
 
 
 game = Game()
+run = True
+while run == True:
+    if __name__ == "__main__":
+        game.main_game_loop() """
+    #run == False
 
-if __name__ == "__main__":
-    game.main_game_loop
 
+""" class Game:
+    def __init__(self):
+        pygame.init()
+        self.screen = screen
+        self.clock = clock
+        self.deltatime = delta_time
+        self.new_game()
 
+    def new_game(self):
+        pass
 
+    def update(self):
+        self.player.movement1()
+        self.raycasying()
+        pygame.display.flip()
+        self.deltatime = self.clock.tick(FPS)
+
+    def draw(self):
+        self.screen.fill(BLACK)
+        self.map.draw_map()
+        self.player.draw_player()
+
+    def check_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    def run(self):
+        while True:
+            self.check_events()
+            self.update()
+            self.draw()
+
+game = Game()
+if __name__ == '__main__':
+    game.run()
 
 
 
  """
+
 
 
 
