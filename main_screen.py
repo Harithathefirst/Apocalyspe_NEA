@@ -20,10 +20,8 @@ from raycasting import *
 #create instance of classes
 map = Map() #map class
 player = Player() #player class
+b = Buttons()
 
-#filepath = pathlib.Path(__file__).resolve().parent / 'title.png'
-#logo = pygame.image.load(filepath)
-##logo = pygame.transform.scale_by(logo,2) 
 #gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
 
 #gun = pygame.image.load('title_gun.png')
@@ -34,11 +32,13 @@ run=True
 #FONT = pygame.font.SysFont('Horta',35)
 #text = FONT.render('quit' , True , RED) 
 
+
+
+
 #main game loop
 while run:
-    #screen.fill(MAIN_PURPLE)
-    #screen.blit(logo,(SCREEN_WIDTH/2 /10 ,0))
-    #screen.blit(gun,SCREEN_WIDTH/2)
+    #b.menu()
+    #b.play_game()
     #close game condition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -48,10 +48,23 @@ while run:
             
     pygame.display.flip() #updates screen every frame
     screen.fill(BLACK)
-    map.draw_map()
-    player.draw_player()
+    #map.draw_map()
+    #player.draw_player()
     player.movement()
     player.raycast()
+
+
+
+
+
+
+
+
+
+
+
+
+    #player.raycast()
     
     #print(raycast())
     #print(player.x,player.y)
