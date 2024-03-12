@@ -9,36 +9,32 @@ import time
 from player import *
 from map import *
 from main_menu import play_game
-from buttons import *
+from menu import *
 from raycasting import *
 
 
 #initialise pygame
-#pygame.init()
+pygame.init()
 
 
 #create instance of classes
 map = Map() #map class
 player = Player() #player class
-b = Buttons()
+b = Menu()
+#c= test_circle()
 
-#gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
-
-#gun = pygame.image.load('title_gun.png')
 
 
 run=True
 #game runs in this loop
-#FONT = pygame.font.SysFont('Horta',35)
-#text = FONT.render('quit' , True , RED) 
-
-
-
-
 #main game loop
 while run:
-    #b.menu()
-    #b.play_game()
+    b.background()
+    b.title()
+    b.play_game("PLAY GAME",MENU_TEXT_FONT,MENU_ORANGE)
+    b.instruction("INSTRUCTIONS ",MENU_TEXT_FONT,MENU_ORANGE)
+    b.controls("& CONTROLS",MENU_TEXT_FONT,MENU_ORANGE)
+    b.leaderboard("LEADERBOARD",MENU_TEXT_FONT,MENU_ORANGE)
     #close game condition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -50,18 +46,9 @@ while run:
     screen.fill(BLACK)
     #map.draw_map()
     #player.draw_player()
-    player.movement()
-    player.raycast()
-
-
-
-
-
-
-
-
-
-
+    #player.movement()
+    #player.raycast()
+    clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
 
 
     #player.raycast()
@@ -74,15 +61,13 @@ while run:
     #player.moving()
     #screen.blit()
     #raycast()
-    clock.tick(FPS)#main loop shouldnt run faster than 60 times per second 
+
     
    
  
-    #screen.blit(logo,(100,100))
+    
   
-    #player.moving()
-    #"C:\Users\bindu\OneDrive - Bright Futures Educational Trust\Alevel\CS NEA\documentcode_git\Apocalyspe_NEA\title.png"
-  
+    
     
     
 

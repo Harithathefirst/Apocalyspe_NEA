@@ -1,5 +1,9 @@
 import pygame 
 import math 
+import pathlib
+
+
+pygame.init()
 
 RES = SCREEN_WIDTH,SCREEN_HEIGHT = 1500,900
 HALF_SCREEN_WIDTH = SCREEN_WIDTH//2
@@ -46,4 +50,10 @@ MAIN_PURPLE =(51, 0, 123)
 USERNAME_BLUE = (0, 179, 255)
 MENU_ORANGE = (253, 110, 14)
 
-TITLE_IMAGE_SIZE = (500,500)
+font_file_path = pathlib.Path(__file__).resolve().parent / 'BarlowSemiCondensed-Black.ttf'
+MENU_TEXT_FONT = pygame.font.Font(font_file_path,60)
+
+
+#gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
+
+#gun = pygame.image.load('title_gun.png')

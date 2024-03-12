@@ -10,10 +10,11 @@ m = Map()
 class Player:
     def __init__(self):
         self.x,self.y = PLAYER_INITIAL_POS 
-        self.speed = 0.04
-        self.x_change = 0
-        self.y_change = 0 
         self.angle = PLAYER_ANGLE 
+        #self.speed = 0.04
+        #self.x_change = 0
+        #self.y_change = 0 
+        
 
     def movement(self):
         sin_A = math.sin(self.angle) #calculates sin of the angle a
@@ -49,10 +50,6 @@ class Player:
             self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
         if keys[pygame.K_RIGHT]:
             self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
-        if keys[pygame.K_UP]:
-             self.angle += self.angle + math.pi/2*PLAYER_ROTATION_SPEED
-        if keys[pygame.K_DOWN]:
-             self.angle += self.angle + math.pi/2*PLAYER_ROTATION_SPEED
         self.angle %= 2 * math.pi #players angle should remain between 0-360
 
         
