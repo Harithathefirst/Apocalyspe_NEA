@@ -44,13 +44,15 @@ class Player:
         #self.x += dx #adds on moveemnt to initial player y pos
         #self.y += dy #adds on movement to initial player x pos
         self.collision(dx,dy)
-
-        #rotation will be with mouse 
-        if keys[pygame.K_LEFT]:
-            self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
-        if keys[pygame.K_RIGHT]:
-            self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
-        self.angle %= 2 * math.pi #players angle should remain between 0-360
+        for event in pygame.event.get():
+             if event.type == pygame. MOUSEBUTTONDOWN:
+                (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
+                #rotation will be with mouse 
+                if MOUSE_Y < SCREEN_WIDTH//2:
+                    self.angle -= PLAYER_ROTATION_SPEED * delta_time #rotate to the left
+                if MOUSE_Y > SCREEN_WIDTH//2:
+                    self.angle += PLAYER_ROTATION_SPEED * delta_time #rotate to the right
+                self.angle %= 2 * math.pi #players angle should remain between 0-360
 
         
     def raycast(self):

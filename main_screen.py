@@ -23,35 +23,52 @@ player = Player() #player class
 b = Menu()
 #c= test_circle()
 
+def gameplay():
+    player.raycast()
+    player.movement()
 
 
 run=True
+menu = True
 #game runs in this loop
 #main game loop
 while run:
-    b.background()
-    b.title()
-    b.play_game("PLAY GAME",MENU_TEXT_FONT,MENU_ORANGE)
-    b.instruction("INSTRUCTIONS ",MENU_TEXT_FONT,MENU_ORANGE)
-    b.controls("& CONTROLS",MENU_TEXT_FONT,MENU_ORANGE)
-    b.leaderboard("LEADERBOARD",MENU_TEXT_FONT,MENU_ORANGE)
+    if menu == True:
+         b.background()
+         pygame.draw.circle(screen,RED,(605,392),10)
+         b.title()
+         b.play_game("PLAY GAME",MENU_TEXT_FONT,MENU_ORANGE)
+         b.instruction("INSTRUCTIONS ",MENU_TEXT_FONT,MENU_ORANGE)
+         b.controls("& CONTROLS",MENU_TEXT_FONT,MENU_ORANGE)
+         b.leaderboard("LEADERBOARD",MENU_TEXT_FONT,MENU_ORANGE)
+
     #close game condition
     for event in pygame.event.get():
+        (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
+        if event.type == pygame. MOUSEBUTTONDOWN:
+             if (MOUSE_X > 605 and MOUSE_X < 605 + b.width_play) and (MOUSE_Y > 392 and MOUSE_Y < 392 + b.height_play):
+                 print(MOUSE_X,MOUSE_Y)
+                 print("clicked")
+                 menu = False
+    
+  
+        
         if event.type == pygame.QUIT:
             run=False
             pygame.quit()
             sys.exit(0) # closes the while loop 
+         
             
     pygame.display.flip() #updates screen every frame
     screen.fill(BLACK)
     #map.draw_map()
     #player.draw_player()
-    #player.movement()
-    #player.raycast()
+    player.movement()
+    player.raycast()
     clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
 
 
-    #player.raycast()
+
     
     #print(raycast())
     #print(player.x,player.y)

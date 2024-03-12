@@ -77,7 +77,7 @@ class Menu:
                          (558,392 + self.height + (128/3)+self.height*2 + (128/3),
                           self.width_instruct_lb,self.height_play),self.border) 
         leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + (128/3) + self.height*2 + (128/3) + 50))
-        print(leaderboard.get_rect())
+        #print(leaderboard.get_rect())
         screen.blit(leaderboard,leaderboard_rect)
         
     
