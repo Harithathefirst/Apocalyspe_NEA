@@ -11,7 +11,7 @@ from map import *
 from main_menu import play_game
 from menu import *
 from raycasting import *
-
+from main_menu import *
 
 #initialise pygame
 pygame.init()
@@ -35,22 +35,18 @@ menu = True
 while run:
     if menu == True:
          b.background()
-         pygame.draw.circle(screen,RED,(605,392),10)
+         #pygame.draw.circle(screen,RED,(605,392),10)
          b.title()
-         b.play_game("PLAY GAME",MENU_TEXT_FONT,MENU_ORANGE)
-         b.instruction("INSTRUCTIONS ",MENU_TEXT_FONT,MENU_ORANGE)
-         b.controls("& CONTROLS",MENU_TEXT_FONT,MENU_ORANGE)
-         b.leaderboard("LEADERBOARD",MENU_TEXT_FONT,MENU_ORANGE)
+         b.play_game()
+         b.instruction()
+         b.controls()
+         b.leaderboard()
 
     #close game condition
     for event in pygame.event.get():
         (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
         if event.type == pygame. MOUSEBUTTONDOWN:
-             if (MOUSE_X > 605 and MOUSE_X < 605 + b.width_play) and (MOUSE_Y > 392 and MOUSE_Y < 392 + b.height_play):
-                 print(MOUSE_X,MOUSE_Y)
-                 print("clicked")
-                 menu = False
-    
+             b.click_play_game()
   
         
         if event.type == pygame.QUIT:
