@@ -11,7 +11,7 @@ from map import *
 from main_menu import play_game
 from menu import *
 from raycasting import *
-from main_menu import *
+
 
 #initialise pygame
 pygame.init()
@@ -30,12 +30,18 @@ def gameplay():
 
 run=True
 menu = True
+instructions = False
+leaderboard = False
 #game runs in this loop
 #main game loop
+
+
+
+
 while run:
     if menu == True:
          b.background()
-         #pygame.draw.circle(screen,RED,(605,392),10)
+         pygame.draw.circle(screen,RED,(605,392),10)
          b.title()
          b.play_game()
          b.instruction()
@@ -46,9 +52,23 @@ while run:
     for event in pygame.event.get():
         (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
         if event.type == pygame. MOUSEBUTTONDOWN:
-             b.click_play_game()
-  
-        
+            if (MOUSE_X > b.play_x and MOUSE_X < b.play_x + b.width_play) and (MOUSE_Y > b.box_y and MOUSE_Y < b.box_y + b.height_box):
+                 print(MOUSE_X,MOUSE_Y)
+                 print("clicked")
+            elif event.type == pygame.MOUSEBUTTONUP:
+                 menu = False
+        if event.type == pygame. MOUSEBUTTONDOWN:
+            if (MOUSE_X > b.instruction_x and MOUSE_X < b.instruction_x + b.width_instruct_lb) and (MOUSE_Y >  b.box_y and MOUSE_Y < b.box_y + b.height_box*2):
+                print("instr clck")
+                print(MOUSE_X,MOUSE_Y)
+            elif event.type == pygame.MOUSEBUTTONUP:
+                instructions = True
+        if event.type == pygame. MOUSEBUTTONDOWN:
+            if (MOUSE_X > b.leaderboard_x and MOUSE_X < b.leaderboard_x + b.width_instruct_lb) and (MOUSE_Y > b.box_y and MOUSE_Y < b.box_y + b.height_box):
+                print("leaderbosr dpress")
+            elif event.type == pygame.MOUSEBUTTONUP:
+                leaderboard = True
+                
         if event.type == pygame.QUIT:
             run=False
             pygame.quit()
@@ -59,8 +79,14 @@ while run:
     screen.fill(BLACK)
     #map.draw_map()
     #player.draw_player()
-    player.movement()
-    player.raycast()
+    if menu == False:
+        player.movement()
+        player.raycast()
+    # elif instructions == True:
+    #     screen.fill(MAIN_PURPLE)
+    # elif leaderboard == True:
+    #     screen.fill(RED)
+   
     clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
 
 

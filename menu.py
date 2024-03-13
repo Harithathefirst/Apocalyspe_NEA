@@ -23,69 +23,81 @@ class Menu:
         self.font = MENU_TEXT_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
-        self.height = 100 #height of box aorund buttons approx
-        self.height_play = 65 #height of box around all buttons
+        self.height = 100 #height of box arund buttons approx
+        self.height_box = 65 #height of box around all buttons
         self.width_play = 290 #width of box around play button
         self.width_instruct_lb = 386 #width of box around leaderboard and instructions
         self.width_controls = 327 #width of box around controls 
         self.width = 500 #width of box around buttons approx
-        self.border = 2 #thickness of border
-        (self.MOUSE_X,self.MOUSE_Y) = pygame.mouse.get_pos()
+        self.border = 2 #thickness of border of boxes
+        self.play_x = 605 #where the play game box button will begin  xcoord
+        self.instruction_x = 550 #where the instructiosn box button will begin drawing xcoord
+        self.leaderboard_x = 558  #where the leaderboard box button will begin drawing xcoord
+        self.box_y = 392 #the y coordinate of where all the boxes will begin drawing
+        self.gap = (128/3) #gap between each button
+
        
 
 
     def background(self):
+        #fills screen as purple 
         screen.fill(MAIN_PURPLE)
 
     def title(self):
+        #copies image onto main game screen
+        #centers image 
         screen.blit(logo,((SCREEN_WIDTH - logo.get_width())/2 - 81,5))
         
    
     def draw_button(self,font):
-        
+        #draws username input box
         pygame.time.delay(5000)
         pygame.draw.rect(screen,USERNAME_BLUE,(SCREEN_WIDTH//2,SCREEN_HEIGHT//2,self.width,self.height))
         username_text = font.render('ENTER PLAYER NAME')
 
     def play_game(self):
+        #play game button
         text = "PLAY GAME"
         play_game = self.font.render(text,True,self.text_colour)
         play_rect_draw = pygame.draw.rect(screen,
-                         self.invisible_box_colour,
-                         (605,392,self.width_play,self.height_play),self.border)
+                         MENU_ORANGE,
+                         (self.play_x,self.box_y,self.width_play,self.height_box),self.border)
         play_rect = play_game.get_rect(center = (500 + self.width//2,372 + self.height//2))
         #print(play_game.get_rect())
         screen.blit(play_game,play_rect)
 
     
     def instruction(self):
+        #instructiopns button
         text = "INSTRUCTIONS "
         instructions = self.font.render(text,True,self.text_colour)
         instructions_rect_draw = pygame.draw.rect(screen,
                          MENU_ORANGE,
-                         (550,392 + self.height + (128/3),self.width_instruct_lb,self.height_play*2),self.border) 
-        instructions_rect = instructions.get_rect(center = (500+self.width//2,372 + self.height + (128/3) + self.height//2))
+                         (self.instruction_x,self.box_y + self.height + self.gap,self.width_instruct_lb,self.height_box*2),self.border) 
+        instructions_rect = instructions.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2))
         #print(instructions.get_rect())
         screen.blit(instructions,instructions_rect)
 
     def controls(self):
+        #instructions button
         text = "& CONTROLS"
         controls = self.font.render(text,True,self.text_colour)
         #controls_rect_draw = pygame.draw.rect(screen,
          #                MENU_ORANGE,
           #               (500,372 + self.height + (128/3),self.width,self.height*2),self.border) 
-        controls_rect = controls.get_rect(center = (500+self.width//2,372 + self.height + (128/3) + self.height//2 + 75))
+        controls_rect = controls.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2 + 75))
         #print(controls.get_rect())
         screen.blit(controls,controls_rect)
 
     def leaderboard(self):
+        #leaderbaord button
         text = "LEADERBOARD"
         leaderboard = self.font.render(text,True,self.text_colour)
         leaderboard_rect_draw = pygame.draw.rect(screen,
                          MENU_ORANGE,
-                         (558,392 + self.height + (128/3)+self.height*2 + (128/3),
-                          self.width_instruct_lb,self.height_play),self.border) 
-        leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + (128/3) + self.height*2 + (128/3) + 50))
+                         (self.leaderboard_x,self.box_y + self.height + self.gap+self.height*2 + self.gap,
+                          self.width_instruct_lb,self.height_box),self.border) 
+        leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + self.gap + self.height*2 + self.gap + 50))
         #print(leaderboard.get_rect())
         screen.blit(leaderboard,leaderboard_rect)
 
