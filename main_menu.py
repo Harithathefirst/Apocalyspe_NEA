@@ -10,4 +10,9 @@ logo = pygame.image.load(filepath)
 logo = pygame.transform.scale(logo,TITLE_IMAGE_SIZE) """
 
 
+def draw_floor():
+    pygame.draw.rect(screen,(119,119,119),(0,HALF_SCREEN_HEIGHT,SCREEN_WIDTH,SCREEN_HEIGHT))
                  
+
+
+

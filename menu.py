@@ -11,18 +11,16 @@ from settings import *
 #text = FONT.render('quit' , True , RED) 
 #self.font = pygame.font.SysFont('freesansbold.ttf', 32)
 
-#define boxes/title image
-logo = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\title1.png") #import the title image
-logo = pygame.transform.scale_by(logo,1.7) #scales all sides by 1.7
-##print(logo.get_size())
-#print(width)
+
 
 
 class Menu:
     def __init__(self):
         self.font = MENU_TEXT_FONT
+        self.username_font = USERNAME_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
+
         self.height = 100 #height of box arund buttons approx
         self.height_box = 65 #height of box around all buttons
         self.width_play = 290 #width of box around play button
@@ -35,6 +33,8 @@ class Menu:
         self.leaderboard_x = 558  #where the leaderboard box button will begin drawing xcoord
         self.box_y = 392 #the y coordinate of where all the boxes will begin drawing
         self.gap = (128/3) #gap between each button
+        self.username_width = (SCREEN_WIDTH - 500)
+        self.username_height = (SCREEN_HEIGHT - 450)
 
        
 
@@ -44,27 +44,43 @@ class Menu:
         screen.fill(MAIN_PURPLE)
 
     def title(self):
+        #define boxes/title image
+        logo = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\title1.png") #import the title image
+        logo = pygame.transform.scale_by(logo,1.7) #scales all sides by 1.7
+        ##print(logo.get_size())
+        #print(width)
         #copies image onto main game screen
         #centers image 
         screen.blit(logo,((SCREEN_WIDTH - logo.get_width())/2 - 81,5))
+        #print(logo.get_height())
         
    
-    def draw_button(self,font):
+    def username_box(self):
         #draws username input box
-        pygame.time.delay(5000)
-        pygame.draw.rect(screen,USERNAME_BLUE,(SCREEN_WIDTH//2,SCREEN_HEIGHT//2,self.width,self.height))
-        username_text = font.render('ENTER PLAYER NAME')
+        text = "ENTER PLAYER NAME"
+        blue = pygame.draw.rect(screen,USERNAME_BLUE,(250 - 20,self.box_y - 10,self.username_width + 40,self.username_height + 20))
+        username_text = self.username_font.render(text,True,BLACK)
+        username_box = username_text.get_rect(center = (500 + self.width//2,372 + self.height//2))
+        username_text = self.username_font.render(text,True,BLACK)
+        usr_height = username_text.get_height()
+        usr_inp = pygame.draw.rect(screen,WHITE,(250 - 20 + 20 ,self.box_y - 10 + usr_height - 20,self.username_width ,self.username_height//8 + 20))
+        screen.blit(username_text,username_box)
+        
 
-    def play_game(self):
-        #play game button
-        text = "PLAY GAME"
-        play_game = self.font.render(text,True,self.text_colour)
-        play_rect_draw = pygame.draw.rect(screen,
-                         MENU_ORANGE,
-                         (self.play_x,self.box_y,self.width_play,self.height_box),self.border)
-        play_rect = play_game.get_rect(center = (500 + self.width//2,372 + self.height//2))
-        #print(play_game.get_rect())
-        screen.blit(play_game,play_rect)
+    def username_input(self):
+         pass
+        
+
+    # def play_game(self):
+    #     #play game button
+    #     text = "PLAY GAME"
+    #     play_game = self.font.render(text,True,self.text_colour)
+    #     play_rect_draw = pygame.draw.rect(screen,
+    #                      MENU_ORANGE,
+    #                      (self.play_x,self.box_y,self.width_play,self.height_box),self.border)
+    #     play_rect = play_game.get_rect(center = (500 + self.width//2,372 + self.height//2))
+    #     #print(play_game.get_rect())
+    #     screen.blit(play_game,play_rect)
 
     
     def instruction(self):
@@ -77,6 +93,49 @@ class Menu:
         instructions_rect = instructions.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2))
         #print(instructions.get_rect())
         screen.blit(instructions,instructions_rect)
+
+    def instructions_screen(self):
+         screen.fill(MAIN_PURPLE)
+
+         text_title = "INSTRUCTIONS"
+         text_title_draw = self.font.render(text_title,True,self.text_colour)
+         screen.blit(text_title_draw,(6,0 ))
+
+         text_main = (
+                       "YOU ARE THE THE LAST SURVIVOR OF A POST - APOCALYPTIC WORLD.\n" 
+                       "NAVIGATE THROUGH THE LEVELS,KILL THE ROBOTS TO STAY ALIVE AND\n"
+                        "ESCAPE.GOOD LUCK SOLDIER! ")
+         text_main_draw = self.font.render(text_main,True,self.text_colour)
+         screen.blit(text_main_draw,(10,50))
+
+         #text_controls = "CONTROLS:"
+         #text_controls_draw = self.font.render(text_controls,True,self.text_colour)
+
+        # key_control_w = "W - MOVE FORWARD"
+        #  key_control_w_draw = self.font.render(key_control_w,True,self.text_colour)
+
+        #  key_control_a = "A - MOVE LEFT"
+        #  key_control_a_draw = self.font.render(key_control_a,True,self.text_colour)
+
+        #  key_control_s = "S - MOVE BACKWARD"
+        #  key_control_s_draw = self.font.render(key_control_s,True,self.text_colour)
+
+        #  key_control_d = "D - MOVE RIGHT"
+        #  key_control_d_draw = self.font.render(key_control_s,True,self.text_colour)
+
+        #  key_control_sp = "SPACE - JUMP"
+        #  key_control_sp_draw = self.font.render(key_control_s,True,self.text_colour)
+
+        #  key_control_m = "MOUSE - LOOK AROUND"
+        #  key_control_m_draw = self.font.render(key_control_s,True,self.text_colour)
+
+        #  key_control_mshoot = "MOUSE - MOVE FORWARD"
+        #  key_control_mshoot_draw = self.font.render(key_control_s,True,self.text_colour)
+
+         
+
+
+         
 
     def controls(self):
         #instructions button
@@ -97,7 +156,7 @@ class Menu:
                          MENU_ORANGE,
                          (self.leaderboard_x,self.box_y + self.height + self.gap+self.height*2 + self.gap,
                           self.width_instruct_lb,self.height_box),self.border) 
-        leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + self.gap + self.height*2 + self.gap + 50))
+        leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + self.gap + self.gap + self.height//2 + 200))
         #print(leaderboard.get_rect())
         screen.blit(leaderboard,leaderboard_rect)
 

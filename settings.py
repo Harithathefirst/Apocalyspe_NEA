@@ -16,7 +16,7 @@ FPS= 60
 PLAYER_INITIAL_POS = 4,6  #on model_map 1 line is equal to 1
 PLAYER_ANGLE = 0 #initial angle
 PLAYER_SPEED = 0.05 # players speed
-PLAYER_ROTATION_SPEED = 0.02 # speed that player can rotate "camera"
+PLAYER_ROTATION_SPEED = 0.03 # speed that player can rotate "camera"
 delta_time = 1 #makes players speed indepenedent to the frame rate
 
 FOV = math.pi / 3 #players field of view #60* FOV
@@ -29,14 +29,10 @@ MAX_DEPTH = 20 #draw distance
 WALL_DIST = HALF_SCREEN_WIDTH / math.tan(HALF_FOV)
 SCALE = SCREEN_WIDTH // NUM_RAYS
 
-#mouse settings
-MOUSE_SENSITIVITY = 0.0003
-MOUSE_MAX_REL = 40
-MOUSE_BORDER_LEFT = 100
-MOUSE_BORDER_RIGHT = SCREEN_WIDTH - MOUSE_BORDER_LEFT
 
 
-screen = pygame.display.set_mode(RES)#creates display surface and makes it fullscreen by resizing
+
+screen = pygame.display.set_mode((RES))#creates display surface and makes it fullscreen by resizing  pygame.RESIZABLE
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate 
 
@@ -52,8 +48,8 @@ MENU_ORANGE = (253, 110, 14)
 
 font_file_path = pathlib.Path(__file__).resolve().parent / 'BarlowSemiCondensed-Black.ttf'
 MENU_TEXT_FONT = pygame.font.Font(font_file_path,60)
+USERNAME_FONT = pygame.font.Font(font_file_path,100)
 
 
-#gunfilepath = pathlib.Path(__file__).resolve().parent / 'title_gun.png'
-
-#gun = pygame.image.load('title_gun.png')
+TEXTURE_SIZE = 256
+HALF_TEXTURE_SIZE = TEXTURE_SIZE//2
