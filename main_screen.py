@@ -29,49 +29,64 @@ leaderboard = Buttons("LEADERBOARD",558,(392 + 100 + (100*2)),386,65,(256/3),300
 #t = Graphics()
 #c= test_circle()
 
+#initial booleans
 run=True
 main_menu = True
-#instructions = False
-#leaderboard = False
+game_screen = False
+instructions_screen = False
+leaderboard_screen = False
+delay_timer = 5
 #game runs in this loop
 #main game loop
-
 while run:
+     #close game condition
      for event in pygame.event.get():
-          (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
           if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                run=False
                pygame.quit()
                sys.exit(0) # closes the while loop 
 
-     if main_menu == True:
-          menu.background()
-          menu.title()
-          #menu.instructions_screen()
-          play_game.make_button()
-          instructions.make_button()
-          controls.make_button()
-          leaderboard.make_button()
+     if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False:
+          if delay_timer >= 5:
+               menu.background()
+               menu.title()
+               play_game.make_button()
+               instructions.make_button()
+               controls.make_button()
+               leaderboard.make_button()
+               delay_timer -= 1
+          else:
+               pygame.time.delay(5000)
+               menu.username_box()
+               #menu.username_input()
 
           if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("clicked")
                main_menu = False
-          #screen.fill(BLACK)
+               game_screen = True
+          elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = False
+               instructions_screen = True
+          elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = False
+               leaderboard_screen = True
+
+     elif main_menu == False and game_screen == True:
+          screen.fill(BLACK)
           player.movement()
           player.raycast()
-               
-          #pygame.time.delay(5000)
-          #b.username_box()
-          #b.username_input()
+     
+     elif main_menu == False and instructions_screen == True:
+          menu.instructions_screen()
+
+     elif main_menu == False and leaderboard_screen == True:
+          menu.leaderboard_screen()
+          
+        
+
+
           
    
-
-#close game condition
-# print(MOUSE_X,MOUSE_Y)
-    
-    
-    
-                          
-             
 
      pygame.display.flip() #updates screen every frame
      #screen.fill(BLACK)

@@ -25,6 +25,7 @@ class Buttons:
                         self.text_colour,(self.x,self.y + self.gap,self.width,self.height),self.border)
         text_rect = text_render.get_rect(center = (self.centre,self.text_y + self.gap + self.rect_height//2 + self.balance))
         screen.blit(text_render,text_rect) #copies text onto text rectangle
+        
 
     def check_click(self):
         (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
@@ -35,7 +36,7 @@ class Buttons:
 
 
 
-        
+
      # if event.type == pygame. MOUSEBUTTONDOWN:
      #      print(MOUSE_X,MOUSE_Y)
      #      if (MOUSE_X > b.play_x and MOUSE_X < b.play_x + b.width_play) and (MOUSE_Y > b.box_y and MOUSE_Y < b.box_y + b.height_box):
@@ -62,6 +63,7 @@ class Buttons:
      #            instructions = True
      #    if event.type == pygame. MOUSEBUTTONDOWN:
      #        (MOUSE_X,MOUSE_Y) = pygame.mouse.get_pos()
+        
      #        if (MOUSE_X > b.leaderboard_x and MOUSE_X < b.leaderboard_x + b.width_instruct_lb) and (MOUSE_Y > b.box_y and MOUSE_Y < b.box_y + b.height_box):
      #            print(MOUSE_X,MOUSE_Y)
      #            print("leaderbosr dpress")

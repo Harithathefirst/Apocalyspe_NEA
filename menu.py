@@ -69,30 +69,7 @@ class Menu:
 
     def username_input(self):
          pass
-        
-
-    # def play_game(self):
-    #     #play game button
-    #     text = "PLAY GAME"
-    #     play_game = self.font.render(text,True,self.text_colour)
-    #     play_rect_draw = pygame.draw.rect(screen,
-    #                      MENU_ORANGE,
-    #                      (self.play_x,self.box_y,self.width_play,self.height_box),self.border)
-    #     play_rect = play_game.get_rect(center = (500 + self.width//2,372 + self.height//2))
-    #     #print(play_game.get_rect())
-    #     screen.blit(play_game,play_rect)
-
     
-    def instruction(self):
-        #instructiopns button
-        text = "INSTRUCTIONS "
-        instructions = self.font.render(text,True,self.text_colour)
-        instructions_rect_draw = pygame.draw.rect(screen,
-                         MENU_ORANGE,
-                         (self.instruction_x,self.box_y + self.height + self.gap,self.width_instruct_lb,self.height_box*2),self.border) 
-        instructions_rect = instructions.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2))
-        #print(instructions.get_rect())
-        screen.blit(instructions,instructions_rect)
 
     def instructions_screen(self):
          screen.fill(MAIN_PURPLE)
@@ -135,36 +112,114 @@ class Menu:
          
 
 
-         
+    def leaderboard_screen(self):
+        screen.fill(MAIN_PURPLE)
+        print("leaderboard")   
 
-    def controls(self):
-        #instructions button
-        text = "& CONTROLS"
-        controls = self.font.render(text,True,self.text_colour)
-        #controls_rect_draw = pygame.draw.rect(screen,
-         #                MENU_ORANGE,
-          #               (500,372 + self.height + (128/3),self.width,self.height*2),self.border) 
-        controls_rect = controls.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2 + 75))
-        #print(controls.get_rect())
-        screen.blit(controls,controls_rect)
 
-    def leaderboard(self):
-        #leaderbaord button
-        text = "LEADERBOARD"
-        leaderboard = self.font.render(text,True,self.text_colour)
-        leaderboard_rect_draw = pygame.draw.rect(screen,
-                         MENU_ORANGE,
-                         (self.leaderboard_x,self.box_y + self.height + self.gap+self.height*2 + self.gap,
-                          self.width_instruct_lb,self.height_box),self.border) 
-        leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + self.gap + self.gap + self.height//2 + 200))
-        #print(leaderboard.get_rect())
-        screen.blit(leaderboard,leaderboard_rect)
 
-    def click_play_game(self):
-         if (self.MOUSE_X > 605 and self.MOUSE_X < 605 + self.width_play) and (self.MOUSE_Y > 392 and self.MOUSE_Y < 392 + self.height_play):
-                 print(self.MOUSE_X,self.MOUSE_Y)
-                 print("clicked")
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # def play_game(self):
+    #     #play game button
+    #     text = "PLAY GAME"
+    #     play_game = self.font.render(text,True,self.text_colour)
+    #     play_rect_draw = pygame.draw.rect(screen,
+    #                      MENU_ORANGE,
+    #                      (self.play_x,self.box_y,self.width_play,self.height_box),self.border)
+    #     play_rect = play_game.get_rect(center = (500 + self.width//2,372 + self.height//2))
+    #     #print(play_game.get_rect())
+    #     screen.blit(play_game,play_rect)
+
+
+    # def instruction(self):
+    #     #instructiopns button
+    #     text = "INSTRUCTIONS "
+    #     instructions = self.font.render(text,True,self.text_colour)
+    #     instructions_rect_draw = pygame.draw.rect(screen,
+    #                      MENU_ORANGE,
+    #                      (self.instruction_x,self.box_y + self.height + self.gap,self.width_instruct_lb,self.height_box*2),self.border) 
+    #     instructions_rect = instructions.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2))
+    #     #print(instructions.get_rect())
+    #     screen.blit(instructions,instructions_rect)
+
+
+
+    # def controls(self):
+    #     #instructions button
+    #     text = "& CONTROLS"
+    #     controls = self.font.render(text,True,self.text_colour)
+    #     #controls_rect_draw = pygame.draw.rect(screen,
+    #      #                MENU_ORANGE,
+    #       #               (500,372 + self.height + (128/3),self.width,self.height*2),self.border) 
+    #     controls_rect = controls.get_rect(center = (500+self.width//2,372 + self.height + self.gap + self.height//2 + 75))
+    #     #print(controls.get_rect())
+    #     screen.blit(controls,controls_rect)
+
+    # def leaderboard(self):
+    #     #leaderbaord button
+    #     text = "LEADERBOARD"
+    #     leaderboard = self.font.render(text,True,self.text_colour)
+    #     leaderboard_rect_draw = pygame.draw.rect(screen,
+    #                      MENU_ORANGE,
+    #                      (self.leaderboard_x,self.box_y + self.height + self.gap+self.height*2 + self.gap,
+    #                       self.width_instruct_lb,self.height_box),self.border) 
+    #     leaderboard_rect = leaderboard.get_rect(center = (500 + self.width//2,372 + self.height + self.gap + self.gap + self.height//2 + 200))
+    #     #print(leaderboard.get_rect())
+    #     screen.blit(leaderboard,leaderboard_rect)
+
+  
     
     
     
@@ -186,11 +241,11 @@ class Menu:
     
     
     
-    def draw_circ(self):
-           #pygame.draw.circle(screen,BLUE,(self.x ,-(SCREEN_HEIGHT/3)),15) 
-           #pygame.draw.circle(screen,RED,(self.x,SCREEN_HEIGHT),15) 
-           pygame.draw.circle(screen,GREEN,(self.x,((SCREEN_HEIGHT/3) + (SCREEN_HEIGHT/3))),15)  
-           pygame.draw.circle(screen,BLUE,(self.x,(SCREEN_HEIGHT/3.7)),15)       
+    # def draw_circ(self):
+    #        #pygame.draw.circle(screen,BLUE,(self.x ,-(SCREEN_HEIGHT/3)),15) 
+    #        #pygame.draw.circle(screen,RED,(self.x,SCREEN_HEIGHT),15) 
+    #        pygame.draw.circle(screen,GREEN,(self.x,((SCREEN_HEIGHT/3) + (SCREEN_HEIGHT/3))),15)  
+    #        pygame.draw.circle(screen,BLUE,(self.x,(SCREEN_HEIGHT/3.7)),15)       
 
     
     
