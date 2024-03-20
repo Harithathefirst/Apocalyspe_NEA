@@ -120,7 +120,7 @@ class Player:
       #self.raycasting_result.append((depth,projection_height,texture,offset))
 
       #  #draw walls
-      shade_colour = [255 / (1 + depth ** 6 * 0.00002)] * 3 #makes further away walls darker
+      shade_colour = [75 / (1 + depth ** 6 * 0.00002)] * 3 #makes further away walls darker
       pygame.draw.rect(screen, shade_colour,
                       (ray * SCALE,HALF_SCREEN_HEIGHT - projection_height//2,SCALE,projection_height)) #places rectangle according to the number of the ray on x axis and places in center of screen
 
@@ -153,8 +153,8 @@ class Player:
   def movement(self):
         self.dx = 0 #x axis movement
         self.dy = 0 #y axis movement
-        sin_A = math.sin(self.angle) #calculates sin of the angle a
-        cos_A = math.cos(self.angle)#cos angle a 
+        sin_A = math.sin(self.angle) #calculates sin of the player angle
+        cos_A = math.cos(self.angle)#cos player angle
         
         keys = pygame.key.get_pressed()
                     #W - move forards

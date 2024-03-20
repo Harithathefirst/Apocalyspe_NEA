@@ -1,6 +1,7 @@
 import pygame
 import time
 from settings import *
+from Buttons import *
 
 
 
@@ -17,9 +18,10 @@ from settings import *
 class Menu:
     def __init__(self):
         self.font = MENU_TEXT_FONT
-        self.username_font = USERNAME_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
+        self.username_font = USERNAME_FONT
+        self.close = Buttons("CLOSE",1400,800,50,100,0,0,1400)
 
         self.height = 100 #height of box arund buttons approx
         self.height_box = 65 #height of box around all buttons
@@ -46,13 +48,14 @@ class Menu:
     def title(self):
         #define boxes/title image
         logo = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\title1.png") #import the title image
-        logo = pygame.transform.scale_by(logo,1.7) #scales all sides by 1.7
-        ##print(logo.get_size())
-        #print(width)
+        logo = pygame.transform.scale_by(logo,1.7) #scales all sides by scalefactor
         #copies image onto main game screen
         #centers image 
-        screen.blit(logo,((SCREEN_WIDTH - logo.get_width())/2 - 81,5))
+        screen.blit(logo,((SCREEN_WIDTH - logo.get_width())/2 - 81,0))
         #print(logo.get_height())
+        #print(logo.get_width())
+        #print(width)
+        #screen.blit(logo,((SCREEN_WIDTH-973)/2 - 81,0))
         
    
     def username_box(self):
@@ -73,7 +76,7 @@ class Menu:
 
     def instructions_screen(self):
          screen.fill(MAIN_PURPLE)
-
+         self.close.make_button()
          text_title = "INSTRUCTIONS"
          text_title_draw = self.font.render(text_title,True,self.text_colour)
          screen.blit(text_title_draw,(6,0 ))
@@ -114,7 +117,10 @@ class Menu:
 
     def leaderboard_screen(self):
         screen.fill(MAIN_PURPLE)
-        print("leaderboard")   
+        print("leaderboard")  
+        
+        
+         
 
 
 

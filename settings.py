@@ -46,8 +46,10 @@ MAIN_PURPLE =(51, 0, 123)
 USERNAME_BLUE = (0, 179, 255)
 MENU_ORANGE = (253, 110, 14)
 
+#Fonts
 font_file_path = pathlib.Path(__file__).resolve().parent / 'BarlowSemiCondensed-Black.ttf'
 MENU_TEXT_FONT = pygame.font.Font(font_file_path,60)
+
 USERNAME_FONT = pygame.font.Font(font_file_path,100)
 
 

@@ -22,10 +22,10 @@ pygame.init()
 map = Map() #map class
 player = Player() #player class
 menu = Menu()
-play_game = Buttons("PLAY GAME",605,392,290,65,0,0)
-instructions = Buttons("INSTRUCTIONS",550,(392+100),386,65*2,(128/3),100)
-controls = Buttons("& CONTROLS",0,0,0,0,(128/3),175)
-leaderboard = Buttons("LEADERBOARD",558,(392 + 100 + (100*2)),386,65,(256/3),300)
+play_game = Buttons("PLAY GAME",605,392,290,65,0,0,750)
+instructions = Buttons("INSTRUCTIONS",550,(392+100),386,65*2,(128/3),100,750)
+controls = Buttons("& CONTROLS",0,0,0,0,(128/3),175,750)
+leaderboard = Buttons("LEADERBOARD",558,(392 + 100 + (100*2)),386,65,(256/3),300,750)
 #t = Graphics()
 #c= test_circle()
 
@@ -35,7 +35,8 @@ main_menu = True
 game_screen = False
 instructions_screen = False
 leaderboard_screen = False
-delay_timer = 5
+
+
 #game runs in this loop
 #main game loop
 while run:
@@ -47,18 +48,15 @@ while run:
                sys.exit(0) # closes the while loop 
 
      if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False:
-          if delay_timer >= 5:
-               menu.background()
-               menu.title()
-               play_game.make_button()
-               instructions.make_button()
-               controls.make_button()
-               leaderboard.make_button()
-               delay_timer -= 1
-          else:
-               pygame.time.delay(5000)
-               menu.username_box()
-               #menu.username_input()
+          menu.background()
+          menu.title()
+          play_game.make_button()
+          instructions.make_button()
+          controls.make_button()
+          leaderboard.make_button()
+          
+          #menu.username_box()
+          #menu.username_input()
 
           if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
                print("clicked")
@@ -73,6 +71,8 @@ while run:
 
      elif main_menu == False and game_screen == True:
           screen.fill(BLACK)
+          #map.draw_map()
+          #player.draw_player()
           player.movement()
           player.raycast()
      

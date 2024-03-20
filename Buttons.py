@@ -2,7 +2,7 @@ import pygame
 from settings import *
 
 class Buttons:
-    def __init__(self,text,x,y,width,height,gap,balance): #parameters needed to make box around text
+    def __init__(self,text,x,y,width,height,gap,offset,centre): #parameters needed to make box around text
         self.text = text #text inside box
         self.x = x #x coordinates of bow
         self.y = y #y coordinates of box
@@ -15,15 +15,15 @@ class Buttons:
         self.rect_width = 500 #rectangle width constant
         self.gap = gap #gap between each bow
         self.border = 2 #thickness of line 
-        self.balance = balance #extra number added on to box to make it even
-        self.centre = 750 #x coordinate of centre of text on screen SW/2
+        self.offset = offset #extra number added on to box to make it even
+        self.centre = centre #x coordinate of centre of text on screen SW/2
         self.text_y = 372 #texts y coordinate
 
     def make_button(self): #makes box and renders text for buttons
         text_render = self.font.render(self.text,True,self.text_colour) #renders text into box
         text_rect_draw = pygame.draw.rect(screen,
                         self.text_colour,(self.x,self.y + self.gap,self.width,self.height),self.border)
-        text_rect = text_render.get_rect(center = (self.centre,self.text_y + self.gap + self.rect_height//2 + self.balance))
+        text_rect = text_render.get_rect(center = (self.centre,self.text_y + self.gap + self.rect_height//2 + self.offset))
         screen.blit(text_render,text_rect) #copies text onto text rectangle
         
 
