@@ -12,6 +12,8 @@ HALF_SCREEN_HEIGHT = SCREEN_HEIGHT//2
 #904/8 = 113
 FPS= 60
 
+
+
 #map coordinates
 PLAYER_INITIAL_POS = 4,6  #on model_map 1 line is equal to 1
 PLAYER_ANGLE = 0 #initial angle
@@ -35,6 +37,8 @@ SCALE = SCREEN_WIDTH // NUM_RAYS
 screen = pygame.display.set_mode((RES))#creates display surface and makes it fullscreen by resizing  pygame.RESIZABLE
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate 
+
+UI_REFRESH_RATE = clock.tick(FPS)/1000
 
 #Colours
 RED = (255,0,0)

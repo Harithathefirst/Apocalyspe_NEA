@@ -3,6 +3,8 @@ import pygame
 import sys #import sys  #imports system-specific parameters and functions
 import os 
 import pathlib
+import pygame_gui
+
 from settings import *
 import math #access sin and cos
 import time
@@ -38,11 +40,16 @@ main_menu = True
 game_screen = False
 instructions_screen = False
 leaderboard_screen = False
-delay_timer = 5
+#ui manager
+MANAGER = pygame_gui.UIManager((SCREEN_WIDTH,SCREEN_HEIGHT))
+#delay_timer = 5
+TEXT_INPUT = pygame_gui.elements.UITextEntryLine(relative_rect = pygame.Rect((248,492), (1004,450//8 + 20)) , manager = MANAGER,
+                                                                         object_id = "#player_name_entry", transparent_bg = True)
 
 
 #game runs in this loop
 #main game loop
+
 while run:
      #close game condition
      for event in pygame.event.get():
@@ -51,72 +58,74 @@ while run:
                pygame.quit()
                sys.exit(0) # closes the while loop 
 
-     #main menu is first thing 
-     if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False: 
-          if delay_timer >=5:
-               menu.background()
-               menu.title()
-               play_game.make_button()
-               instructions.make_button()
-               controls.make_button()
-               leaderboard.make_button()
-               delay_timer -=1
-          else:
-               pygame.time.delay(5000)
-               menu.username_box()
-            
-        
+          MANAGER.process_events(event)
 
+     MANAGER.update(UI_REFRESH_RATE)
 
+     menu.username_box()
 
-
-
-         
-          #checks to see which button is pressed
-          #change boolean values
-          if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               print("play game clicked")
-               main_menu = False
-               game_screen = True
-          elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               print("instructiosn clicked")
-               main_menu = False
-               instructions_screen = True
-          elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               print("leaderboard clicked")
-               main_menu = False
-               leaderboard_screen = True
-
-     #using boolean values chnage to correct screen
-     elif main_menu == False and game_screen == True:
-          screen.fill(BLACK)
-          #map.draw_map()
-          #player.draw_player()
-          player.movement()
-          player.raycast()
-     
-     elif main_menu == False and instructions_screen == True:
-          menu.instructions_screen()
-          #close button for instructiosn
-          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               main_menu = True
-               instructions_screen = False
-
-     elif main_menu == False and leaderboard_screen == True:
-          menu.leaderboard_screen()
-          #close button for leaderboard
-          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               main_menu = True
-               leaderboard_screen = False
-          
-        
-
-         
-          
-   
+     MANAGER.draw_ui(screen)
 
      pygame.display.flip() #updates screen every frame
-     #screen.fill(BLACK)
+
+     #clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
+
+
+
+          #  #main menu is first thing 
+          # if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False: 
+          #      # menu.background()
+          #      # menu.title()
+          #      # play_game.make_button()
+          #      # instructions.make_button()
+          #      # controls.make_button()
+          #      # leaderboard.make_button()
+          #      menu.username_box()
+          
+          #      #checks to see which button is pressed
+          #      #change boolean values
+          #      if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+          #           print("play game clicked")
+          #           main_menu = False
+          #           game_screen = True
+          #      elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+          #           print("instructiosn clicked")
+          #           main_menu = False
+          #           instructions_screen = True
+          #      elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+          #           print("leaderboard clicked")
+          #           main_menu = False
+          #           leaderboard_screen = True
+
+          # #using boolean values chnage to correct screen
+          # elif main_menu == False and game_screen == True:
+          #      screen.fill(BLACK)
+          #      #map.draw_map()
+          #      #player.draw_player()
+          #      player.movement()
+          #      player.raycast()
+          
+          # elif main_menu == False and instructions_screen == True:
+          #      menu.instructions_screen()
+          #      #close button for instructiosn
+          #      if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+          #           main_menu = True
+          #           instructions_screen = False
+
+          # elif main_menu == False and leaderboard_screen == True:
+          #      menu.leaderboard_screen()
+          #      #close button for leaderboard
+          #      if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+          #           main_menu = True
+          #           leaderboard_screen = False
+               
+          
+
+         
+
+
+
+    #screen.fill(BLACK)
         #map.draw_map()
         #player.draw_player()
     
@@ -124,7 +133,162 @@ while run:
         #player.mouse_movement()
         #player.move_update()
 
-     clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
