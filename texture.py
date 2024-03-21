@@ -1,6 +1,6 @@
 import pygame
 from settings import *
-from player import Player
+#from player import Player
 
 
 

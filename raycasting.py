@@ -10,6 +10,7 @@ from player import *
 class Raycasting:
   def __init__(self,player):
     self.player = Player()
+    self.map = Map()
     
 def render(self):
     self.objects_to_render = []
@@ -26,12 +27,12 @@ def render(self):
     
 def raycast(self):
     # self.raycasting_result = []
-    ox, oy = self.position_current #map coordinates
-    x_map,y_map = self.position_map # players position on map grid line
+    ox, oy = self.player.position_current #map coordinates
+    x_map,y_map = self.player.position_map # players position on map grid line
     #texture_vert,texture_hor = 1,1
     #angle for first ray
     
-    ray_angle = self.angle - HALF_FOV + 0.0001 #adding 0.0001 avoids dividing by 0 error
+    ray_angle = self.player.angle - HALF_FOV + 0.0001 #adding 0.0001 avoids dividing by 0 error
     for ray in range(NUM_RAYS):
       sin_ray_angle = math.sin(ray_angle) #sin of current ray
       cos_ray_angle = math.cos(ray_angle) #cosine of current ray

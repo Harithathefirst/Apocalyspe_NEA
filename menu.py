@@ -2,7 +2,7 @@ import pygame
 import time
 from settings import *
 from Buttons import *
-
+from functions import *
 
 
 
@@ -17,11 +17,12 @@ from Buttons import *
 
 class Menu:
     def __init__(self):
-        self.font = MENU_TEXT_FONT
+        self.font = INSTRUCTION_TITLE_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
-        self.username_font = USERNAME_FONT
-        self.close = Buttons("CLOSE",1400,800,50,100,0,0,1400)
+
+        #self.username_font = USERNAME_FONT
+        self.close = Buttons("CLOSE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1340,820,120,60,0,0,0,1405,800,0)
 
         self.height = 100 #height of box arund buttons approx
         self.height_box = 65 #height of box around all buttons
@@ -55,7 +56,8 @@ class Menu:
         #print(logo.get_height())
         #print(logo.get_width())
         #print(width)
-        #screen.blit(logo,((SCREEN_WIDTH-973)/2 - 81,0))
+
+       
         
    
     def username_box(self):
@@ -75,49 +77,48 @@ class Menu:
     
 
     def instructions_screen(self):
-         screen.fill(MAIN_PURPLE)
-         self.close.make_button()
-         text_title = "INSTRUCTIONS"
-         text_title_draw = self.font.render(text_title,True,self.text_colour)
-         screen.blit(text_title_draw,(6,0 ))
+        screen.fill(MAIN_PURPLE) #make bg colour purple
+        text_title = "INSTRUCTIONS:" #title of screen
+        text_title_draw = self.font.render(text_title,True,self.text_colour) #make title text an image
+        screen.blit(text_title_draw,(6,0 )) #copies onto screen
+        multiple_lines_text(INSTRUCTION_TEXT,(6,80),INSTRUCTION_TEXT_FONT)
+        #controls subtitle
+        text_subtitle = "CONTROLS:"
+        text_subtitle_draw = self.font.render(text_subtitle,True,self.text_colour)
+        screen.blit(text_subtitle_draw,(6,230))
+        #displays information about the controls
+        multiple_lines_text(CONTROLS_TEXT,(830,265),MENU_TEXT_FONT)
+        #puts wasd image onto screen
+        wasd = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\WASD_keys.png")
+        wasd = pygame.transform.scale_by(wasd,0.25)
+        screen.blit(wasd,(-20,325))
+        #puts spacebar image onto screen
+        spacebar = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\spacebar.png")
+        spacebar = pygame.transform.scale_by(spacebar,0.2)  
+        screen.blit(spacebar,(420,485))
+        #puts mouse onto screen
+        mouse = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\mouse.png")
+        mouse = pygame.transform.scale_by(mouse,0.3)
+        screen.blit(mouse,(95,610))
+        self.close.make_button()
+        self.close.check_click()
+        
 
-         text_main = (
-                       "YOU ARE THE THE LAST SURVIVOR OF A POST - APOCALYPTIC WORLD.\n" 
-                       "NAVIGATE THROUGH THE LEVELS,KILL THE ROBOTS TO STAY ALIVE AND\n"
-                        "ESCAPE.GOOD LUCK SOLDIER! ")
-         text_main_draw = self.font.render(text_main,True,self.text_colour)
-         screen.blit(text_main_draw,(10,50))
 
-         #text_controls = "CONTROLS:"
-         #text_controls_draw = self.font.render(text_controls,True,self.text_colour)
 
-        # key_control_w = "W - MOVE FORWARD"
-        #  key_control_w_draw = self.font.render(key_control_w,True,self.text_colour)
-
-        #  key_control_a = "A - MOVE LEFT"
-        #  key_control_a_draw = self.font.render(key_control_a,True,self.text_colour)
-
-        #  key_control_s = "S - MOVE BACKWARD"
-        #  key_control_s_draw = self.font.render(key_control_s,True,self.text_colour)
-
-        #  key_control_d = "D - MOVE RIGHT"
-        #  key_control_d_draw = self.font.render(key_control_s,True,self.text_colour)
-
-        #  key_control_sp = "SPACE - JUMP"
-        #  key_control_sp_draw = self.font.render(key_control_s,True,self.text_colour)
-
-        #  key_control_m = "MOUSE - LOOK AROUND"
-        #  key_control_m_draw = self.font.render(key_control_s,True,self.text_colour)
-
-        #  key_control_mshoot = "MOUSE - MOVE FORWARD"
-        #  key_control_mshoot_draw = self.font.render(key_control_s,True,self.text_colour)
-
-         
 
 
     def leaderboard_screen(self):
         screen.fill(MAIN_PURPLE)
-        print("leaderboard")  
+        self.close.make_button()
+        self.close.check_click()
+        print("leaderboard") 
+        
+        
+         
+
+
+ 
         
         
          

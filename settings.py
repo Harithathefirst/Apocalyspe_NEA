@@ -45,13 +45,20 @@ BLACK = (0,0,0)
 MAIN_PURPLE =(51, 0, 123)
 USERNAME_BLUE = (0, 179, 255)
 MENU_ORANGE = (253, 110, 14)
+CLOSE_GREEN = (148, 221, 38)
 
 #Fonts
 font_file_path = pathlib.Path(__file__).resolve().parent / 'BarlowSemiCondensed-Black.ttf'
 MENU_TEXT_FONT = pygame.font.Font(font_file_path,60)
-
+INSTRUCTION_TITLE_FONT = pygame.font.Font(font_file_path,80)
+INSTRUCTION_TEXT_FONT = pygame.font.Font(font_file_path,45)
+#CONTROLS_TEXT_FONT = pygame.font.Font(font_file_path,50)
 USERNAME_FONT = pygame.font.Font(font_file_path,100)
 
+INSTRUCTION_TEXT = "YOU ARE THE THE LAST SURVIVOR OF A POST-APOCALYPTIC WORLD.\nNAVIGATE THROUGH THE LEVELS, KILL THE ROBOTS TO STAY ALIVE AND\nESCAPE. GOOD LUCK SOLDIER!"
+CONTROLS_TEXT = "W - MOVE FORWARD            \nA - MOVE LEFT                       \nS - MOVE BACKWARD           \nD - MOVE RIGHT          \nSPACEBAR - JUMP      \nMOUSE - LOOK AROUND \nMOUSE - LEFTCLICK SHOOT"
+#CONTROLS_TEXT = "MOUSE - LEFTCLICK SHOOT"
 
+#textures
 TEXTURE_SIZE = 256
 HALF_TEXTURE_SIZE = TEXTURE_SIZE//2

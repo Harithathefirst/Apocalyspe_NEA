@@ -6,11 +6,12 @@ import pathlib
 from settings import *
 import math #access sin and cos
 import time
-from player import Player
+#from player import Player
 from map import *
 from menu import *
 from raycasting import *
 from Buttons import *
+from functions import *
 #from texture import *
 
 
@@ -18,16 +19,18 @@ from Buttons import *
 pygame.init()
 
 
-#create instance of classes
+#create objects
 map = Map() #map class
 player = Player() #player class
 menu = Menu()
-play_game = Buttons("PLAY GAME",605,392,290,65,0,0,750)
-instructions = Buttons("INSTRUCTIONS",550,(392+100),386,65*2,(128/3),100,750)
-controls = Buttons("& CONTROLS",0,0,0,0,(128/3),175,750)
-leaderboard = Buttons("LEADERBOARD",558,(392 + 100 + (100*2)),386,65,(256/3),300,750)
-#t = Graphics()
-#c= test_circle()
+#walls = Graphics()
+#buttons
+play_game = Buttons("PLAY GAME",MENU_ORANGE,MENU_ORANGE,MENU_TEXT_FONT,605,392,290,65,0,0,0,750,372,2)
+instructions = Buttons("INSTRUCTIONS",MENU_ORANGE,MENU_ORANGE,MENU_TEXT_FONT,550,(392+100),386,65*2,(128/3),100,0,750,372,2)
+controls = Buttons("& CONTROLS",MENU_ORANGE,MENU_ORANGE,MENU_TEXT_FONT,0,0,0,0,(128/3),175,0,750,372,2)
+leaderboard = Buttons("LEADERBOARD",MENU_ORANGE,MENU_ORANGE,MENU_TEXT_FONT,558,(392 + 100 + (100*2) + 83),386,65,(256/3),300,83,750,372,2)
+
+
 
 #initial booleans
 run=True
@@ -46,45 +49,61 @@ while run:
                run=False
                pygame.quit()
                sys.exit(0) # closes the while loop 
-
-     if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False:
+               
+     #main menu is first thing 
+     if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False: 
           menu.background()
           menu.title()
           play_game.make_button()
           instructions.make_button()
           controls.make_button()
           leaderboard.make_button()
+   
           
-          #menu.username_box()
-          #menu.username_input()
-
+         
+          #checks to see which button is pressed
+          #change boolean values
           if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-               print("clicked")
+               print("play game clicked")
                main_menu = False
                game_screen = True
           elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("instructiosn clicked")
                main_menu = False
                instructions_screen = True
           elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("leaderboard clicked")
                main_menu = False
                leaderboard_screen = True
 
+     #using boolean values chnage to correct screen
      elif main_menu == False and game_screen == True:
           screen.fill(BLACK)
           #map.draw_map()
           #player.draw_player()
           player.movement()
           player.raycast()
+          pygame.mouse.set_visible(False)
+          screen.blit(target,pygame.mouse.get_pos())
      
      elif main_menu == False and instructions_screen == True:
           menu.instructions_screen()
+          #close button for instructiosn
+          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = True
+               instructions_screen = False
 
      elif main_menu == False and leaderboard_screen == True:
           menu.leaderboard_screen()
+          #close button for leaderboard
+          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = True
+               leaderboard_screen = False
           
         
 
-
+           #menu.username_box()
+          #menu.username_input()
           
    
 
