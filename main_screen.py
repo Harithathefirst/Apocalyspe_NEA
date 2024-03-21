@@ -38,6 +38,7 @@ main_menu = True
 game_screen = False
 instructions_screen = False
 leaderboard_screen = False
+delay_timer = 5
 
 
 #game runs in this loop
@@ -49,17 +50,27 @@ while run:
                run=False
                pygame.quit()
                sys.exit(0) # closes the while loop 
-               
+
      #main menu is first thing 
      if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False: 
-          menu.background()
-          menu.title()
-          play_game.make_button()
-          instructions.make_button()
-          controls.make_button()
-          leaderboard.make_button()
-   
-          
+          if delay_timer >=5:
+               menu.background()
+               menu.title()
+               play_game.make_button()
+               instructions.make_button()
+               controls.make_button()
+               leaderboard.make_button()
+               delay_timer -=1
+          else:
+               pygame.time.delay(5000)
+               menu.username_box()
+            
+        
+
+
+
+
+
          
           #checks to see which button is pressed
           #change boolean values
@@ -83,8 +94,6 @@ while run:
           #player.draw_player()
           player.movement()
           player.raycast()
-          pygame.mouse.set_visible(False)
-          screen.blit(target,pygame.mouse.get_pos())
      
      elif main_menu == False and instructions_screen == True:
           menu.instructions_screen()
@@ -102,8 +111,7 @@ while run:
           
         
 
-           #menu.username_box()
-          #menu.username_input()
+         
           
    
 

@@ -54,6 +54,7 @@ INSTRUCTION_TITLE_FONT = pygame.font.Font(font_file_path,80)
 INSTRUCTION_TEXT_FONT = pygame.font.Font(font_file_path,45)
 #CONTROLS_TEXT_FONT = pygame.font.Font(font_file_path,50)
 USERNAME_FONT = pygame.font.Font(font_file_path,100)
+TEXT_FONT = pygame.font.Font(None,40)
 
 INSTRUCTION_TEXT = "YOU ARE THE THE LAST SURVIVOR OF A POST-APOCALYPTIC WORLD.\nNAVIGATE THROUGH THE LEVELS, KILL THE ROBOTS TO STAY ALIVE AND\nESCAPE. GOOD LUCK SOLDIER!"
 CONTROLS_TEXT = "W - MOVE FORWARD            \nA - MOVE LEFT                       \nS - MOVE BACKWARD           \nD - MOVE RIGHT          \nSPACEBAR - JUMP      \nMOUSE - LOOK AROUND \nMOUSE - LEFTCLICK SHOOT"

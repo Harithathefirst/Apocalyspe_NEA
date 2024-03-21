@@ -22,5 +22,5 @@ def multiple_lines_text(text,pos,font):
         y += word_height
        
 
-target = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\target.png")
-target = pygame.transform.scale_by(target,0.2)
+# target = pygame.image.load("C:\\Users\\bindu\\OneDrive - Bright Futures Educational Trust\\Alevel\\CS NEA\\documentcode_git\\Apocalyspe_NEA\\textures and sprites\\target.png")
+# target = pygame.transform.scale_by(target,0.2)

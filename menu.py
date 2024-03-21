@@ -20,24 +20,13 @@ class Menu:
         self.font = INSTRUCTION_TITLE_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
-
-        #self.username_font = USERNAME_FONT
         self.close = Buttons("CLOSE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1340,820,120,60,0,0,0,1405,800,0)
-
-        self.height = 100 #height of box arund buttons approx
-        self.height_box = 65 #height of box around all buttons
-        self.width_play = 290 #width of box around play button
-        self.width_instruct_lb = 386 #width of box around leaderboard and instructions
-        self.width_controls = 327 #width of box around controls 
-        self.width = 500 #width of box around buttons approx
-        self.border = 2 #thickness of border of boxes
-        self.play_x = 605 #where the play game box button will begin  xcoord
-        self.instruction_x = 550 #where the instructiosn box button will begin drawing xcoord
-        self.leaderboard_x = 558  #where the leaderboard box button will begin drawing xcoord
-        self.box_y = 392 #the y coordinate of where all the boxes will begin drawing
-        self.gap = (128/3) #gap between each button
+        self.username_font = USERNAME_FONT
+        #1000x450 blue box
         self.username_width = (SCREEN_WIDTH - 500)
         self.username_height = (SCREEN_HEIGHT - 450)
+
+      
 
        
 
@@ -53,6 +42,7 @@ class Menu:
         #copies image onto main game screen
         #centers image 
         screen.blit(logo,((SCREEN_WIDTH - logo.get_width())/2 - 81,0))
+        
         #print(logo.get_height())
         #print(logo.get_width())
         #print(width)
@@ -63,18 +53,19 @@ class Menu:
     def username_box(self):
         #draws username input box
         text = "ENTER PLAYER NAME"
-        blue = pygame.draw.rect(screen,USERNAME_BLUE,(250 - 20,self.box_y - 10,self.username_width + 40,self.username_height + 20))
+        #draws the blue rectangle
+        blue = pygame.draw.rect(screen,USERNAME_BLUE,(250 - 20,392 - 10,self.username_width + 40,self.username_height + 20))
         username_text = self.username_font.render(text,True,BLACK)
-        username_box = username_text.get_rect(center = (500 + self.width//2,372 + self.height//2))
-        username_text = self.username_font.render(text,True,BLACK)
+        username_box = username_text.get_rect(center = (HALF_SCREEN_WIDTH,392 + 100//2))
         usr_height = username_text.get_height()
-        usr_inp = pygame.draw.rect(screen,WHITE,(250 - 20 + 20 ,self.box_y - 10 + usr_height - 20,self.username_width ,self.username_height//8 + 20))
+        #print(usr_height)
+        #makes white text input box
+        usr_inp = pygame.draw.rect(screen,WHITE,(250,392 + usr_height - 20,self.username_width ,self.username_height//8 + 20))
+        #screen.blit(usr_inp)
         screen.blit(username_text,username_box)
         
-
     def username_input(self):
-         pass
-    
+        pass
 
     def instructions_screen(self):
         screen.fill(MAIN_PURPLE) #make bg colour purple
@@ -105,9 +96,6 @@ class Menu:
         
 
 
-
-
-
     def leaderboard_screen(self):
         screen.fill(MAIN_PURPLE)
         self.close.make_button()
@@ -118,7 +106,19 @@ class Menu:
          
 
 
- 
+#    self.height = 100 #height of box arund buttons approx
+#         self.height_box = 65 #height of box around all buttons
+#         self.width_play = 290 #width of box around play button
+#         self.width_instruct_lb = 386 #width of box around leaderboard and instructions
+#         self.width_controls = 327 #width of box around controls 
+#         self.width = 500 #width of box around buttons approx
+#         self.border = 2 #thickness of border of boxes
+#         self.play_x = 605 #where the play game box button will begin  xcoord
+#         self.instruction_x = 550 #where the instructiosn box button will begin drawing xcoord
+#         self.leaderboard_x = 558  #where the leaderboard box button will begin drawing xcoord
+#          self.box_y = 392 #the y coordinate of where all the boxes will begin drawing
+#         self.gap = (128/3) #gap between each button
+        
         
         
          
