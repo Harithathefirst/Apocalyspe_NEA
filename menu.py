@@ -17,14 +17,16 @@ from functions import *
 
 class Menu:
     def __init__(self):
-        self.font = INSTRUCTION_TITLE_FONT
+        self.font_i= INSTRUCTION_TITLE_FONT
+        self.font_lb =LEADERBOARD_TITLE_FONT
         self.text_colour = (MENU_ORANGE)
         self.invisible_box_colour = MAIN_PURPLE
         self.close = Buttons("CLOSE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1340,820,120,60,0,0,0,1405,800,0)
         self.username_font = USERNAME_FONT
         #1000x450 blue box
-        self.username_width = (SCREEN_WIDTH - 500)
-        self.username_height = (SCREEN_HEIGHT - 450)
+        self.username_width = (SCREEN_WIDTH - 500) #1000
+        self.username_height = (SCREEN_HEIGHT - 450) #450
+        self.save = Buttons("SAVE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1168,790,120,60,0,0,0,1210,765,0)
 
       
 
@@ -50,32 +52,36 @@ class Menu:
        
         
    
-    def username_box(self):
+    def username_box(self,user_input):
         #draws username input box
         text = "ENTER PLAYER NAME"
+        text_surface = TEXT_FONT.render(user_input,True,BLACK)
         #draws the blue rectangle
-        blue = pygame.draw.rect(screen,USERNAME_BLUE,(250 - 20,392 - 10,self.username_width + 40,self.username_height + 20))
-        username_text = self.username_font.render(text,True,BLACK)
-        username_box = username_text.get_rect(center = (HALF_SCREEN_WIDTH,392 + 100//2))
+        blue = pygame.draw.rect(screen,USERNAME_BLUE,(250 - 20,392 - 10,self.username_width + 40,self.username_height + 20)) #blue box
+        username_text = self.username_font.render(text,True,BLACK) #text surface
+        username_box = username_text.get_rect(center = (HALF_SCREEN_WIDTH,392 + 100//2)) #center the blue box
         usr_height = username_text.get_height()
         #print(usr_height)
         #makes white text input box
-        usr_inp = pygame.draw.rect(screen,WHITE,(250,392 + usr_height - 20,self.username_width ,self.username_height//8 + 20))
-        #screen.blit(usr_inp)
+        usr_inp = pygame.draw.rect(screen,WHITE,(250,392 + usr_height - 20,self.username_width ,self.username_height//8 + 20)) #text input box
+        self.save.make_button()
+        #puts text surface onto white rectangle
+        screen.blit(text_surface,(260,516))
+        #puts title on blue box
         screen.blit(username_text,username_box)
-        
-    def username_input(self):
-        pass
+
+
+
 
     def instructions_screen(self):
         screen.fill(MAIN_PURPLE) #make bg colour purple
         text_title = "INSTRUCTIONS:" #title of screen
-        text_title_draw = self.font.render(text_title,True,self.text_colour) #make title text an image
+        text_title_draw = self.font_i.render(text_title,True,self.text_colour) #make title text an image
         screen.blit(text_title_draw,(6,0 )) #copies onto screen
         multiple_lines_text(INSTRUCTION_TEXT,(6,80),INSTRUCTION_TEXT_FONT)
         #controls subtitle
         text_subtitle = "CONTROLS:"
-        text_subtitle_draw = self.font.render(text_subtitle,True,self.text_colour)
+        text_subtitle_draw = self.font_i.render(text_subtitle,True,self.text_colour)
         screen.blit(text_subtitle_draw,(6,230))
         #displays information about the controls
         multiple_lines_text(CONTROLS_TEXT,(830,265),MENU_TEXT_FONT)
@@ -92,18 +98,29 @@ class Menu:
         mouse = pygame.transform.scale_by(mouse,0.3)
         screen.blit(mouse,(95,610))
         self.close.make_button()
-        self.close.check_click()
+        #self.close.check_click()
         
 
 
     def leaderboard_screen(self):
         screen.fill(MAIN_PURPLE)
+        text_title = "LEADERBOARD"
+        text_title_draw = self.font_lb.render(text_title,True,self.text_colour)
+        print(text_title_draw.get_width())
+        screen.blit(text_title_draw,((SCREEN_WIDTH - text_title_draw.get_width())//2,5))
         self.close.make_button()
-        self.close.check_click()
+        #self.close.check_click()
         print("leaderboard") 
-        
-        
-         
+
+
+
+
+
+
+
+
+
+       
 
 
 #    self.height = 100 #height of box arund buttons approx

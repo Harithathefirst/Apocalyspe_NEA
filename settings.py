@@ -38,7 +38,7 @@ screen = pygame.display.set_mode((RES))#creates display surface and makes it ful
 pygame.display.set_caption("Apocalypse") #sets title on the window
 clock = pygame.time.Clock() #clock object to help make frame rate 
 
-UI_REFRESH_RATE = clock.tick(FPS)/1000
+
 
 #Colours
 RED = (255,0,0)
@@ -50,19 +50,22 @@ MAIN_PURPLE =(51, 0, 123)
 USERNAME_BLUE = (0, 179, 255)
 MENU_ORANGE = (253, 110, 14)
 CLOSE_GREEN = (148, 221, 38)
+ERROR_RED = (230,0,0)
 
 #Fonts
 font_file_path = pathlib.Path(__file__).resolve().parent / 'BarlowSemiCondensed-Black.ttf'
 MENU_TEXT_FONT = pygame.font.Font(font_file_path,60)
 INSTRUCTION_TITLE_FONT = pygame.font.Font(font_file_path,80)
+LEADERBOARD_TITLE_FONT = pygame.font.Font(font_file_path,100)
 INSTRUCTION_TEXT_FONT = pygame.font.Font(font_file_path,45)
+ERROR_TEXT_FONT = pygame.font.Font(font_file_path,40)
 #CONTROLS_TEXT_FONT = pygame.font.Font(font_file_path,50)
 USERNAME_FONT = pygame.font.Font(font_file_path,100)
 TEXT_FONT = pygame.font.Font(None,40)
 
 INSTRUCTION_TEXT = "YOU ARE THE THE LAST SURVIVOR OF A POST-APOCALYPTIC WORLD.\nNAVIGATE THROUGH THE LEVELS, KILL THE ROBOTS TO STAY ALIVE AND\nESCAPE. GOOD LUCK SOLDIER!"
 CONTROLS_TEXT = "W - MOVE FORWARD            \nA - MOVE LEFT                       \nS - MOVE BACKWARD           \nD - MOVE RIGHT          \nSPACEBAR - JUMP      \nMOUSE - LOOK AROUND \nMOUSE - LEFTCLICK SHOOT"
-#CONTROLS_TEXT = "MOUSE - LEFTCLICK SHOOT"
+
 
 #textures
 TEXTURE_SIZE = 256

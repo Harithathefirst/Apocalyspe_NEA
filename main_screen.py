@@ -3,17 +3,15 @@ import pygame
 import sys #import sys  #imports system-specific parameters and functions
 import os 
 import pathlib
-import pygame_gui
-
 from settings import *
 import math #access sin and cos
 import time
-#from player import Player
+from player import Player
 from map import *
 from menu import *
 from raycasting import *
 from Buttons import *
-from functions import *
+#from functions import *
 #from texture import *
 
 
@@ -34,22 +32,19 @@ leaderboard = Buttons("LEADERBOARD",MENU_ORANGE,MENU_ORANGE,MENU_TEXT_FONT,558,(
 
 
 
-#initial booleans
+# #initial booleans
 run=True
 main_menu = True
 game_screen = False
 instructions_screen = False
 leaderboard_screen = False
-#ui manager
-MANAGER = pygame_gui.UIManager((SCREEN_WIDTH,SCREEN_HEIGHT))
-#delay_timer = 5
-TEXT_INPUT = pygame_gui.elements.UITextEntryLine(relative_rect = pygame.Rect((248,492), (1004,450//8 + 20)) , manager = MANAGER,
-                                                                         object_id = "#player_name_entry", transparent_bg = True)
+usr_box = False
+user_input = " "
+delay_timer = 5
 
 
 #game runs in this loop
 #main game loop
-
 while run:
      #close game condition
      for event in pygame.event.get():
@@ -57,207 +52,92 @@ while run:
                run=False
                pygame.quit()
                sys.exit(0) # closes the while loop 
+          if event.type == pygame.KEYDOWN:
+               if event.key == pygame.K_BACKSPACE: #makes backspace
+                    user_input =  user_input[:-1]   #user input becomes every charcater up to one before last
+               else:
+                    user_input += event.unicode #any other key
 
-          MANAGER.process_events(event)
+     if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False and usr_box == False: 
+          #main menu is first thing 
+          if delay_timer >= 5:
+               menu.background()
+               menu.title()
+               play_game.make_button()
+               instructions.make_button()
+               controls.make_button()
+               leaderboard.make_button()
+               delay_timer -= 1
+          else:
+               pygame.time.delay(5000)
+               usr_box = True
 
-     MANAGER.update(UI_REFRESH_RATE)
+          ##checks to see which button is pressed
+               #change boolean values
+          if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("play game clicked")
+               main_menu = False
+               game_screen = True
+          elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("instructiosn clicked")
+               main_menu = False
+               instructions_screen = True
+          elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               print("leaderboard clicked")
+               main_menu = False
+               leaderboard_screen = True
 
-     menu.username_box()
+     #using boolean values chnage to correct screen
+     elif main_menu == False and game_screen == True:
+          screen.fill(BLACK)
+          #map.draw_map()
+          #player.draw_player()
+          player.movement()
+          player.raycast()
+     
+     elif main_menu == False and instructions_screen == True:
+          menu.instructions_screen()
+          #close button for instructiosn
+          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = True
+               instructions_screen = False
 
-     MANAGER.draw_ui(screen)
+     elif main_menu == False and leaderboard_screen == True:
+          menu.leaderboard_screen()
+          #close button for leaderboard
+          if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+               main_menu = True
+               leaderboard_screen = False
 
-     pygame.display.flip() #updates screen every frame
+     elif main_menu == True and usr_box == True:
+          menu.username_box(user_input)
 
-     #clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
-
-
-
-          #  #main menu is first thing 
-          # if main_menu == True and game_screen == False and instructions_screen == False and leaderboard_screen == False: 
-          #      # menu.background()
-          #      # menu.title()
-          #      # play_game.make_button()
-          #      # instructions.make_button()
-          #      # controls.make_button()
-          #      # leaderboard.make_button()
-          #      menu.username_box()
-          
-          #      #checks to see which button is pressed
-          #      #change boolean values
-          #      if play_game.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-          #           print("play game clicked")
-          #           main_menu = False
-          #           game_screen = True
-          #      elif instructions.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-          #           print("instructiosn clicked")
-          #           main_menu = False
-          #           instructions_screen = True
-          #      elif leaderboard.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-          #           print("leaderboard clicked")
-          #           main_menu = False
-          #           leaderboard_screen = True
-
-          # #using boolean values chnage to correct screen
-          # elif main_menu == False and game_screen == True:
-          #      screen.fill(BLACK)
-          #      #map.draw_map()
-          #      #player.draw_player()
-          #      player.movement()
-          #      player.raycast()
-          
-          # elif main_menu == False and instructions_screen == True:
-          #      menu.instructions_screen()
-          #      #close button for instructiosn
-          #      if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-          #           main_menu = True
-          #           instructions_screen = False
-
-          # elif main_menu == False and leaderboard_screen == True:
-          #      menu.leaderboard_screen()
-          #      #close button for leaderboard
-          #      if menu.close.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-          #           main_menu = True
-          #           leaderboard_screen = False
-               
-          
+          if check_user_input_length(user_input) == True and check_no_symbol(user_input) == True:
+               if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+                    print("valid")
+                    main_menu = True
+                    usr_box = False
+                    delay_timer = 1e+10
+          elif user_input == " ":
+               if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+                    print("no values")
+                    error_message()
+                    main_menu = True
+                    usr_box = True
+          elif check_user_input_length(user_input) == False or check_no_symbol(user_input) == False:
+               if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
+                    print("invalid value")
+                    error_message()
+                    main_menu = True
+                    usr_box = True
+                    
+                         
 
          
+   
 
-
-
-    #screen.fill(BLACK)
-        #map.draw_map()
-        #player.draw_player()
-    
-        #t.draw()
-        #player.mouse_movement()
-        #player.move_update()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     pygame.display.flip() #updates screen every frame
+     clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
 
 
 
@@ -307,6 +187,13 @@ while run:
     #player.moving()
     #screen.blit()
     #raycast()
+       #screen.fill(BLACK)
+        #map.draw_map()
+        #player.draw_player()
+    
+        #t.draw()
+        #player.mouse_movement()
+        #player.move_update()
 
     
    
