@@ -11,7 +11,7 @@ from map import *
 from menu import *
 from raycasting import *
 from Buttons import *
-#from functions import *
+from functions import *
 #from texture import *
 
 
@@ -39,7 +39,7 @@ game_screen = False
 instructions_screen = False
 leaderboard_screen = False
 usr_box = False
-user_input = " "
+user_input = ""
 delay_timer = 5
 
 
@@ -110,32 +110,36 @@ while run:
                leaderboard_screen = False
 
      elif main_menu == True and usr_box == True:
-          menu.username_box(user_input)
+          menu.username_box(user_input) #displays enter player name box
 
           if check_user_input_length(user_input) == True and check_no_symbol(user_input) == True:
+               #checks if input is valid
                if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-                    print("valid")
                     main_menu = True
                     usr_box = False
                     delay_timer = 1e+10
-          elif user_input == " ":
+          elif check_user_input_length(user_input) == False:
+               #checks if input is invalid/not meeting conditions on length
                if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-                    print("no values")
-                    error_message()
+                    #keeps player name box open and puts a message when you click save
+                    error_message("PLAYER NAME MUST BE BETWEEN 3 AND 15 CHARACTERS!")
+                    pygame.display.flip()
+                    pygame.event.pump()
+                    pygame.time.delay(3000)
                     main_menu = True
                     usr_box = True
-          elif check_user_input_length(user_input) == False or check_no_symbol(user_input) == False:
+          elif check_no_symbol(user_input) == False:
                if menu.save.check_click() == True and event.type == pygame.MOUSEBUTTONDOWN:
-                    print("invalid value")
-                    error_message()
+                    ##checks if input is invalid/not meeting conditions on no symbols
+                    error_message("PLAYER NAME MUST NOT INCLUDE SYMBOLS")
+                    pygame.display.flip()
+                    pygame.event.pump()
+                    pygame.time.delay(3000)
                     main_menu = True
                     usr_box = True
-                    
-                         
+    
 
-         
-   
-
+    
      pygame.display.flip() #updates screen every frame
      clock.tick(FPS) #main loop shouldnt run faster than 60 times per second 
 

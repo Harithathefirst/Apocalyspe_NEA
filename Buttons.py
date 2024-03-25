@@ -26,6 +26,7 @@ class Buttons:
         #if button is solid
         if self.border == 0:
             text_render = self.font.render(self.text,True,self.text_colour,self.box_colour) #renders text into box
+            #print(text_render.get_size())
             text_rect = text_render.get_rect(center = (self.centre,self.text_y + self.gap + self.rect_height//2 + self.offset))
             screen.blit(text_render,text_rect) #copies text onto text rectangle
         else:   

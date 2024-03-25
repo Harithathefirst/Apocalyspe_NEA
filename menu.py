@@ -2,7 +2,7 @@ import pygame
 import time
 from settings import *
 from Buttons import *
-from functions import *
+from functions import multiple_lines_text
 
 
 
@@ -26,7 +26,7 @@ class Menu:
         #1000x450 blue box
         self.username_width = (SCREEN_WIDTH - 500) #1000
         self.username_height = (SCREEN_HEIGHT - 450) #450
-        self.save = Buttons("SAVE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1168,790,120,60,0,0,0,1210,765,0)
+        self.save = Buttons("SAVE",BLACK,CLOSE_GREEN,INSTRUCTION_TEXT_FONT,1158,790,104,54,0,0,0,1210,765,0)
 
       
 
@@ -63,7 +63,7 @@ class Menu:
         usr_height = username_text.get_height()
         #print(usr_height)
         #makes white text input box
-        usr_inp = pygame.draw.rect(screen,WHITE,(250,392 + usr_height - 20,self.username_width ,self.username_height//8 + 20)) #text input box
+        usr_inp = pygame.draw.rect(screen,WHITE,(250,392 + usr_height - 20,self.username_width ,self.username_height//8 + 20),2) #text input box
         self.save.make_button()
         #puts text surface onto white rectangle
         screen.blit(text_surface,(260,516))

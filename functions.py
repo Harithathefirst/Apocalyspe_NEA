@@ -42,10 +42,9 @@ def check_user_input():
 
 
 
-def error_message():
-     text_error = "PLAYER NAME MUST BE BETWEEN 3 AND 15 CHARACTERS!"
+def error_message(text_error):
      text_rect = ERROR_TEXT_FONT.render(text_error,True,ERROR_RED)
-     print(text_rect.get_width())
+     #print(text_rect.get_width())
      screen.blit(text_rect,((1000-text_rect.get_width())//2+250,592))
 
 
@@ -53,19 +52,38 @@ def error_message():
 def check_user_input_length(user_input):
      #checks if text entered is correct length
      if len(user_input) >= 3 and len(user_input) <=15:
+          print("valid length")
           return True
+     elif len(user_input) == 0:
+          print("empty entry")
+          return False
      else:
+          print("wrong length")
           return False
 
-#user_input = input("enter :")   
+# def check_for_space(user_input):
+#      if user_input.isspace() == True:
+#           print("empty")  #if blank retrun false
+#           return False
+#      else:
+#           return True
+
+
 
 def check_no_symbol(user_input):
      if user_input.isalnum() == True: #all alphanumeric characters in str
-          #print("no symbol detected")
+          print("no symbol detected")
           return True 
      elif user_input.isalnum() == False: #symbol found in str
-          #print("Symbol detected")
+          print("Symbol detected")
           return False
+
+#inp = input("enter: ")
+     
+def check_menu(user_input):
+     while check_user_input_length(user_input) == False or check_no_symbol(user_input) == False:
+          user_input = " "
+     
        
 
 #check_no_symbol(user_input)
@@ -80,3 +98,12 @@ def check_no_symbol(user_input):
 # text = input("Enter ")
 # print(text)
 # print(text.isalnum())
+
+
+# ent = input("enter: ")
+
+# while ent == " ":
+#      print("pls enter a value")
+#      ent = input("enter: ")
+     
+# print(ent)
